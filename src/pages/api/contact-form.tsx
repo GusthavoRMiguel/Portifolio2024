@@ -1,41 +1,60 @@
+import nodemailer, { TransportOptions, SentMessageInfo } from 'nodemailer';
 import axios from 'axios';
 
-const nodemailer = require('nodemailer');
+interface RequestBody {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  subject?: string;
+}
 
-const mailConfig = {
+interface Response {
+  status(code: number): {
+    (): any;
+    new (): any;
+    json(data: { status: number; message?: string }): void;
+  };
+}
+
+interface CustomTransportOptions extends TransportOptions {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+}
+
+const mailConfig: CustomTransportOptions = {
   host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
-    user: process.env.NEXT_PUBLIC_GMAIL_USER,
-    pass: process.env.NEXT_PUBLIC_GMAIL_PASS
+    user: process.env.NEXT_PUBLIC_GMAIL_USER!,
+    pass: process.env.NEXT_PUBLIC_GMAIL_PASS!
   }
 };
 
-const adminEmail = 'Gusthavo Ramos Miguel <gusthavo.rmiguel@gmail.com>';
+const adminEmail: string = 'Gusthavo Ramos Miguel <gusthavo.rmiguel@gmail.com>';
 
-async function getPubFile(file: string) {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}${file}`);
+async function getPubFile(file: string): Promise<string> {
+  const res = await axios.get<string>(
+    `${process.env.NEXT_PUBLIC_BASE_URL}${file}`
+  );
   return res.data;
 }
 
-export default async function handler(req: any, res: any) {
-  sendEmails(req, res);
+export default async function handler(
+  req: { body: RequestBody },
+  res: Response
+) {
+  await sendEmails(req, res);
 }
 
-async function sendEmails(
-  req: {
-    body: { name: any; email: any; phone: any; message: any; subject: any };
-  },
-  res: {
-    status: (arg0: number) => {
-      (): any;
-      new (): any;
-      json: { (arg0: { status: number; message?: string }): void; new (): any };
-    };
-  }
-) {
-  let transporter = nodemailer.createTransport(mailConfig);
+async function sendEmails(req: { body: RequestBody }, res: Response) {
+  const transporter = nodemailer.createTransport(mailConfig);
 
   const template = await getPubFile('/email-templates/template.html');
   const custHtml = await getPubFile('/email-templates/customer.html');
@@ -58,7 +77,7 @@ async function sendEmails(
     .replace('%PHONE%', req.body.phone)
     .replace('%MESSAGE%', req.body.message);
 
-  let info = await transporter.sendMail({
+  let info: SentMessageInfo = await transporter.sendMail({
     from: adminEmail,
     to: recipEmail,
     subject: 'Mensagem Recebida ✔',

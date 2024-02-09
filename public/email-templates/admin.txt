@@ -1,0 +1,9 @@
+Nova Mensagem do Site
+
+As seguintes informações foram enviadas:
+
+Nome: %NAME%
+Email: %EMAIL%
+Contato: %PHONE%
+Mensagem:
+%MESSAGE%

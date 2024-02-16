@@ -10,10 +10,14 @@ export const Content = styled.div`
   padding: 2rem;
   display: flex;
   position: relative;
-  left: 5vw;
+  left: 8vw;
   transition: left ${theme.transition.default};
-  &.sidebar-open {
-    left: 20vw;
+
+  @media (min-width: 1020px) {
+    left: 5vw;
+    &.sidebar-open {
+      left: 20vw;
+    }
   }
 
   @media (min-width: 1800px) {
@@ -33,7 +37,19 @@ export const UserInfo = styled.div`
     span {
       font-size: 2.5rem;
       margin-left: 10px;
-      color: ${theme.colors.red_50};
+    }
+  }
+  @media (max-width: 940px) {
+    margin-top: 35vh;
+
+    h1 {
+      display: flow-root;
+      font-size: 1rem;
+      span {
+        font-size: 1rem;
+        margin-left: 1px;
+        color: ${theme.colors.red_50};
+      }
     }
   }
 `;

@@ -7,9 +7,9 @@ interface SideBarProps {
 export const SidebarContainer = styled.div<SideBarProps>`
   position: fixed;
   top: 0;
-  left: ${({ open }) => (open ? '0' : '-15vw')};
+  left: ${({ open }) => (open ? '0' : '-90vw')};
   height: 100%;
-  width: 60vw;
+  width: 100vw;
   background-color: ${theme.colors.whiteSnow};
   box-shadow: ${theme.box.shadow};
   transition: left ${theme.transition.default};
@@ -19,7 +19,9 @@ export const SidebarContainer = styled.div<SideBarProps>`
   text-align: justify;
   display: flex;
   flex-direction: column;
+
   @media (min-width: 1200px) {
+    left: ${({ open }) => (open ? '0' : '-15vw')};
     width: 20vw;
   }
   @media (min-width: 1600px) {

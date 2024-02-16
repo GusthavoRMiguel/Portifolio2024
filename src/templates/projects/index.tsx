@@ -23,9 +23,13 @@ const ProjectsPage: React.FC = () => {
   };
 
   const detectLanguage = () => {
-    const userLanguages = navigator.languages || [navigator.language];
-    const primaryLanguage = userLanguages[0].startsWith('pt') ? 'pt' : 'en';
-    return primaryLanguage;
+    if (typeof window !== 'undefined') {
+      const userLanguages = navigator.languages || [navigator.language];
+      const primaryLanguage = userLanguages[0].startsWith('pt') ? 'pt' : 'en';
+      return primaryLanguage;
+    }
+    // Trate o caso em que navigator não está disponível, por exemplo, retornando uma linguagem padrão.
+    return 'en';
   };
 
   const translate = (key: string, translations: Translations) => {

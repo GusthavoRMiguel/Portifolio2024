@@ -23,9 +23,13 @@ const AboutPage: React.FC = () => {
   };
 
   const detectLanguage = () => {
-    const userLanguages = navigator.languages || [navigator.language];
-    const primaryLanguage = userLanguages[0].startsWith('pt') ? 'pt' : 'en';
-    return primaryLanguage;
+    if (typeof window !== 'undefined') {
+      const userLanguages = navigator.languages || [navigator.language];
+      const primaryLanguage = userLanguages[0].startsWith('pt') ? 'pt' : 'en';
+      return primaryLanguage;
+    }
+
+    return 'en';
   };
 
   const translate = (key: string, translations: Translations) => {

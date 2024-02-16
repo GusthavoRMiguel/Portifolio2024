@@ -13,9 +13,7 @@ interface User {
 
 const HomePage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
-
   const ano = new Date().getFullYear();
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleSidebarOpen = () => {
@@ -83,7 +81,7 @@ const HomePage: React.FC = () => {
         </UserInfo>
 
         <PhotoContainer imageUrl={user?.avatar_url || ''} />
-      </Content>{' '}
+      </Content>
       <Footer className={isSidebarOpen ? 'sidebar-open' : ''}>
         <ul>
           <li>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@testing-library/react": "^14.2.1",
     "@types/mongoose": "^5.11.97",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
+    "@types/jest": "^29.5.12",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.14",
@@ -44,6 +46,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
+    "nodemailer-mock": "^2.0.4",
     "typescript": "^5.2.2"
   }
 }

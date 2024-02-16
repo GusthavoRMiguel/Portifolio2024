@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import AppProvider from '@/hooks';
 
 import GlobalStyles from '@/styles/global';
+import CircleClick from '@/components/circleClick';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -16,6 +17,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="Project" />
       </Head>
       <Component {...pageProps} />
+      <CircleClick />
       <GlobalStyles />
     </AppProvider>
   );

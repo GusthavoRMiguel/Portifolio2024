@@ -35,7 +35,7 @@ const HomePage: React.FC = () => {
       <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
         <UserInfo>
           <h1>
-            Ola meu nome é <span>{user?.name}</span>, desenvolvedor web.
+            Ola, meu nome é <span>{user?.name}</span>, desenvolvedor web.
           </h1>
           <FlexLinks>
             <Link href="https://github.com/GusthavoRMiguel" target="__blank">

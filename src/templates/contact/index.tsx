@@ -84,13 +84,13 @@ const ContactPage: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Contact | Gusthavo Ramos</title>
+        <title>Contato | Gusthavo Ramos</title>
       </Head>
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'open-sidebar' : ''}>
           <BoxMain>
-            <PageName page="Contact" />
+            <PageName page="Contato" />
 
             <BoxForm>
               <div className="grid">

@@ -13,13 +13,7 @@ import {
 import Sidebar from '@/components/sideBar';
 import PageName from '@/components/pageName';
 import Card from './components/card';
-
-interface Translations {
-  [key: string]: {
-    pt: string;
-    en: string;
-  };
-}
+import Head from 'next/head';
 
 interface CardProps {
   color: string;
@@ -36,28 +30,6 @@ const CertificatesPage: React.FC = () => {
   const ano = new Date().getFullYear();
   const handleSidebarOpen = () => {
     setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const detectLanguage = () => {
-    if (typeof window !== 'undefined') {
-      const userLanguages = navigator.languages || [navigator.language];
-      const primaryLanguage = userLanguages[0].startsWith('pt') ? 'pt' : 'en';
-      return primaryLanguage;
-    }
-
-    return 'en';
-  };
-
-  const translate = (key: string, translations: Translations) => {
-    const language = detectLanguage();
-    return translations[key][language] || key;
-  };
-
-  const translatesOptions = {
-    Certificates: {
-      pt: 'Certificados',
-      en: 'Certificates'
-    }
   };
 
   const cardData: CardProps[] = [
@@ -190,43 +162,49 @@ const CertificatesPage: React.FC = () => {
   ];
 
   return (
-    <Container>
-      <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
-      <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
-        <Heading>
-          <PageName page={translate('Certificates', translatesOptions)} />
-        </Heading>
-        <ListCards>
-          {cardData.map((card, index) => (
-            <CardPage key={index}>
-              <Card
-                color={card.color}
-                status={card.status}
-                img={card.img}
-                icon={card.icon}
-                title={card.title}
-                description={card.description}
-                link={card.link || ''}
-              />
-            </CardPage>
-          ))}
-        </ListCards>
-      </Content>
-      <Footer className={isSidebarOpen ? 'sidebar-open' : ''}>
-        <ul>
-          <li>
-            <span>GUSTHAVO RAMOS MIGUEL</span>
-          </li>
-          <li>
-            <span>Copyright ©</span>
-          </li>
-          <li>
-            <span>{ano}</span>
-          </li>
-        </ul>
-      </Footer>
-      <Spacer />
-    </Container>
+    <>
+      {' '}
+      <Head>
+        <title>Certificados | Gusthavo Ramos</title>
+      </Head>{' '}
+      <Container>
+        <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
+        <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
+          <Heading>
+            <PageName page="Certificados" />
+          </Heading>
+          <ListCards>
+            {cardData.map((card, index) => (
+              <CardPage key={index}>
+                <Card
+                  color={card.color}
+                  status={card.status}
+                  img={card.img}
+                  icon={card.icon}
+                  title={card.title}
+                  description={card.description}
+                  link={card.link || ''}
+                />
+              </CardPage>
+            ))}
+          </ListCards>
+        </Content>
+        <Footer className={isSidebarOpen ? 'sidebar-open' : ''}>
+          <ul>
+            <li>
+              <span>GUSTHAVO RAMOS MIGUEL</span>
+            </li>
+            <li>
+              <span>Copyright ©</span>
+            </li>
+            <li>
+              <span>{ano}</span>
+            </li>
+          </ul>
+        </Footer>
+        <Spacer />
+      </Container>
+    </>
   );
 };
 

@@ -15,6 +15,11 @@ import PageName from '@/components/pageName';
 import Card from './components/card';
 import Head from 'next/head';
 
+interface ScreenShot {
+  imgTitle: string;
+  imgSrc: string;
+}
+
 interface CardProps {
   color: string;
   status: string;
@@ -23,6 +28,9 @@ interface CardProps {
   title: string;
   description: string;
   link: string;
+  linkGithub: string;
+  info: string;
+  screenShots?: ScreenShot[];
 }
 
 const ProjectsPage: React.FC = () => {
@@ -40,7 +48,13 @@ const ProjectsPage: React.FC = () => {
       icon: '/img/icons8-react.svg',
       title: 'SmartFactory',
       description: 'Interface de gerenciamento industrial.',
-      link: 'https://smartfactory.com.br/'
+      link: 'https://smartfactory.com.br/',
+      linkGithub: '',
+      info: 'Projeto criado em react',
+      screenShots: [
+        { imgTitle: 'Teste', imgSrc: '/img/image-1.jpg' },
+        { imgTitle: 'Teste 2', imgSrc: '/img/contact.png' }
+      ]
     },
     {
       color: '#10b981',
@@ -50,7 +64,9 @@ const ProjectsPage: React.FC = () => {
       title: 'Portifólio',
       description:
         'Página de portifólio desenvolvida em next com typescript e styled-components',
-      link: 'https://gustha-devold.vercel.app'
+      link: 'https://gustha-devold.vercel.app',
+      linkGithub: '',
+      info: 'Projeto criado em react'
     },
     {
       color: '#10b981',
@@ -59,7 +75,9 @@ const ProjectsPage: React.FC = () => {
       icon: '/img/icons8-nextjs.svg',
       title: 'KSG Vidros para Vans',
       description: 'Site expositório em NextJs com tailwind-css',
-      link: 'https://ksg-vidros.vercel.app/'
+      link: 'https://ksg-vidros.vercel.app/',
+      linkGithub: '',
+      info: 'Projeto criado em react'
     },
     {
       color: '#10b981',
@@ -68,7 +86,9 @@ const ProjectsPage: React.FC = () => {
       icon: '/img/icons8-javascript.svg',
       title: 'Clone Netflix',
       description: 'Clone NetFlix em javascript com bootstrap  e carrousel.',
-      link: 'https://mult-flix.vercel.app/'
+      link: 'https://mult-flix.vercel.app/',
+      linkGithub: '',
+      info: 'Projeto criado em react'
     },
     {
       color: '#facc15',
@@ -78,13 +98,14 @@ const ProjectsPage: React.FC = () => {
       title: 'Money Script',
       description:
         'Gestor de finanças desenvolvido em react e banco de dados firebase.',
-      link: 'https://money-script.vercel.app/'
+      link: 'https://money-script.vercel.app/',
+      linkGithub: '',
+      info: 'Projeto criado em react'
     }
   ];
 
   return (
     <>
-      {' '}
       <Head>
         <title>Projetos | Gusthavo Ramos</title>
       </Head>
@@ -105,6 +126,9 @@ const ProjectsPage: React.FC = () => {
                   title={card.title}
                   description={card.description}
                   link={card.link || ''}
+                  linkGithub={card.linkGithub || ''}
+                  info={card.info || ''}
+                  screenShots={card.screenShots || []}
                 />
               </CardPage>
             ))}

@@ -12,6 +12,9 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-family: ${theme.font.family};
     ::-webkit-scrollbar-thumb {
     background-color: ${theme.colors.gray_300} !important;
    }
@@ -68,6 +71,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: normal;
     display: flex;
     align-items: center;
+    font-family: ${theme.font.family};
   }
 
 

@@ -32,7 +32,7 @@ export const Content = styled.div`
   }
 
   @media (max-width: 640px) {
-    width: 22rem;
+    width: 23rem;
     height: 32rem;
   }
 `;

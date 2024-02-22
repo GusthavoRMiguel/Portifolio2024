@@ -1,11 +1,11 @@
 {
-  "name": "Money Script",
-  "short_name": "MS",
+  "name": "Portifólio Gusthavo R Miguel",
+  "short_name": "PGRM",
   "icons": [
     {
-      "src": "/assets/icon.png",
+      "src": "/icon.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "50x50"
     }
   ],
   "background_color": "#0c0f16",

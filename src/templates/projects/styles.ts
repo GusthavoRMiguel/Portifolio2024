@@ -65,11 +65,12 @@ export const ListCards = styled.div`
   }
 
   @media (max-width: 640px) {
+    margin-top: 5vh;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     padding-inline: 0.5rem;
-    margin-left: 2vw;
-    width: 88vw;
-    height: 90vh;
+    margin-left: 5vw;
+    width: 84vw;
+    height: 65vh;
   }
 `;
 
@@ -79,7 +80,7 @@ export const CardPage = styled.div`
   padding-top: 2rem;
 
   @media (max-width: 640px) {
-    height: 90vh;
+    height: 65vh;
   }
 `;
 

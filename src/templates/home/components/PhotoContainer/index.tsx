@@ -1,28 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaUserAstronaut } from 'react-icons/fa';
-import { ConeBase, ConeContainer, Image, ImageDefault } from './styles';
+import { ShadowBase, ShadowContainer, Image, ImageDefault } from './styles';
 
 interface PhotoContainerProps {
   imageUrl: string;
+  isSidebarOpen: boolean;
 }
 
-const PhotoContainer: React.FC<PhotoContainerProps> = ({ imageUrl }) => {
+const PhotoContainer = ({ imageUrl, isSidebarOpen }: PhotoContainerProps) => {
+  const imageRef = useRef<HTMLImageElement>(null);
   const [mouseAngle, setMouseAngle] = useState<number>(0);
 
   useEffect(() => {
-    const updateConeDirection = (e: MouseEvent) => {
-      const image = document.getElementById('image');
-      if (!image) return;
+    const updateShadowDirection = (e: MouseEvent) => {
+      if (!imageRef.current) return;
 
-      const imageRect = image.getBoundingClientRect();
-      const imageCenterX = imageRect.left + imageRect.width / 2;
-      const imageCenterY = imageRect.top + imageRect.height / 2;
+      const { left, width, top, height } =
+        imageRef.current.getBoundingClientRect();
+      const imageCenterX = left + width / 2;
+      const imageCenterY = top + height / 2;
 
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
-
-      const deltaX = mouseX - imageCenterX;
-      const deltaY = mouseY - imageCenterY;
+      const deltaX = e.clientX - imageCenterX;
+      const deltaY = e.clientY - imageCenterY;
 
       let angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
       if (angle < 0) {
@@ -32,25 +31,25 @@ const PhotoContainer: React.FC<PhotoContainerProps> = ({ imageUrl }) => {
       setMouseAngle(angle);
     };
 
-    document.addEventListener('mousemove', updateConeDirection);
+    document.addEventListener('mousemove', updateShadowDirection);
 
     return () => {
-      document.removeEventListener('mousemove', updateConeDirection);
+      document.removeEventListener('mousemove', updateShadowDirection);
     };
   }, []);
 
   return (
-    <ConeContainer>
-      <ConeBase angle={mouseAngle} />
+    <ShadowContainer className={isSidebarOpen ? 'sidebar-open' : ''}>
+      <ShadowBase angle={mouseAngle} />
 
       {imageUrl === '' ? (
-        <ImageDefault id="image">
+        <ImageDefault>
           <FaUserAstronaut />
         </ImageDefault>
       ) : (
-        <Image id="image" src={imageUrl} alt="Image" />
+        <Image ref={imageRef} src={imageUrl} alt="Image" />
       )}
-    </ConeContainer>
+    </ShadowContainer>
   );
 };
 

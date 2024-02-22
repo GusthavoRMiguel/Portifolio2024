@@ -7,16 +7,20 @@ export const Container = styled.main`
 `;
 
 export const Content = styled.div`
-  padding: 2rem;
+  padding: 3rem;
   display: flex;
   position: relative;
   left: 8vw;
+  width: 92vw;
   transition: left ${theme.transition.default};
 
   @media (min-width: 1020px) {
     left: 5vw;
+    width: 95vw;
+    padding: 5rem;
     &.sidebar-open {
       left: 20vw;
+      width: 80vw;
     }
   }
 
@@ -30,25 +34,25 @@ export const Content = styled.div`
 export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 3.7rem;
     span {
-      font-size: 2.5rem;
+      font-size: 3.7rem;
       margin-left: 10px;
+      color: ${theme.colors.gray_500};
+      font-weight: 800;
     }
   }
   @media (max-width: 940px) {
-    margin-top: 35vh;
-
+    margin-top: 30vh;
+    text-align: center;
     h1 {
-      display: flow-root;
-      font-size: 1rem;
+      display: grid;
+      font-size: 2.1rem;
       span {
-        font-size: 1rem;
-        margin-left: 1px;
-        color: ${theme.colors.red_50};
+        font-size: 2.1rem;
       }
     }
   }
@@ -71,7 +75,7 @@ export const FlexLinks = styled.div`
       border-radius: 10px;
 
       svg {
-        width: 40px;
+        width: 50px;
         height: auto;
       }
     }
@@ -85,6 +89,19 @@ export const FlexLinks = styled.div`
 
     .whatsapp {
       background-color: #38a169;
+    }
+  }
+
+  @media (max-width: 960px) {
+    place-content: center;
+
+    a {
+      button {
+        svg {
+          width: 40px;
+          height: auto;
+        }
+      }
     }
   }
 `;
@@ -116,7 +133,9 @@ export const Footer = styled(motion.footer)`
         color: ${theme.colors.gray_300};
 
         &:hover {
-          color: ${theme.colors.green};
+          color: ${theme.colors.blackQuantum};
+          font-weight: 800;
+          cursor: pointer;
         }
       }
     }

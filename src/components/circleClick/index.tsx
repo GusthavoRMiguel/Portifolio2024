@@ -4,7 +4,7 @@ import { Circle } from './styles';
 const CircleClick: React.FC = () => {
   const [mouseX, setMouseX] = useState<number | null>(null);
   const [mouseY, setMouseY] = useState<number | null>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [firstClick, setFirstClick] = useState(true);
 
   useEffect(() => {
@@ -12,18 +12,11 @@ const CircleClick: React.FC = () => {
       setMouseX(event.clientX);
       setMouseY(event.clientY);
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
 
-  useEffect(() => {
     const handleClick = () => {
-      if (firstClick) {
+      if (firstClick && !isExpanded) {
         setIsExpanded(true);
         setFirstClick(false);
-
         setTimeout(() => {
           setIsExpanded(false);
           setFirstClick(true);
@@ -32,16 +25,20 @@ const CircleClick: React.FC = () => {
     };
 
     window.addEventListener('click', handleClick);
+    window.addEventListener('mousemove', handleMouseMove);
+
     return () => {
       window.removeEventListener('click', handleClick);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [firstClick]);
+  }, [firstClick, isExpanded]);
+
   return (
     <Circle
-      mouseX={mouseX}
-      mouseY={mouseY}
-      isExpanded={isExpanded}
-      animate={{ scale: !isExpanded ? 0.5 : 2, opacity: !isExpanded ? 1 : 0.5 }}
+      mousex={mouseX}
+      mousey={mouseY}
+      isexpanded={isExpanded.toString()}
+      animate={{ scale: isExpanded ? 2 : 0.5, opacity: isExpanded ? 0.5 : 1 }}
       transition={{ duration: 0.5 }}
     />
   );

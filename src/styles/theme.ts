@@ -10,8 +10,7 @@ export default {
     shadow: '-4px 0 10px rgba(0, 0, 0, 0.2)'
   },
   font: {
-    family:
-      "Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    family: 'Share Tech, sans-serif',
     light: 300,
     normal: 400,
     bold: 600,

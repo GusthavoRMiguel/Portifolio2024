@@ -1,46 +1,58 @@
-import styled from 'styled-components';
+import theme from '@/styles/theme';
+import styled, { css } from 'styled-components';
 
-export const ConeContainer = styled.div`
+export const ShadowContainer = styled.div`
   position: fixed;
-  top: 25vh;
-  right: 25vw;
+  top: 30vh;
+  right: 35vw;
+
+  transition: right ${theme.transition.default};
+
+  &.sidebar-open {
+    top: 30vh;
+    right: 20vw;
+  }
 
   @media (max-width: 940px) {
     top: 5vh;
-    right: 20vw;
+    right: 22vw;
+
+    &.sidebar-open {
+      top: 5vh;
+      right: 22vw;
+    }
   }
 `;
 
-interface ConeBaseProps {
+interface ShadowBaseProps {
   angle: number;
 }
 
-export const ConeBase = styled.div<ConeBaseProps>`
+export const ShadowBase = styled.div<ShadowBaseProps>`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(${(props) => props.angle}deg);
-  height: 22rem;
-  border-top: 10.5rem solid transparent;
-  border-bottom: 10.5rem solid transparent;
-  border-left: 22rem solid rgba(1, 1, 1, 0.1);
+  transform: translate(-50%, -50%) rotate(${({ angle }) => angle}deg);
+
+  height: 20rem;
+  border-top: 0 solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 19rem solid white;
+  box-shadow: 20px 0px 20px 20px rgba(0, 0, 0, 0.15);
   z-index: -1;
   border-radius: 100%;
 
-  ${(props) => {
-    // Define a distância do cone até o centro da imagem
-    const distance = 56; // Valor do raio do cone
+  ${({ angle }) => {
+    const distance = 5;
 
-    // Calcula as coordenadas do cone com base no ângulo
-    const radians = props.angle * (Math.PI / 180);
-    const coneCenterX = Math.cos(radians) * distance;
-    const coneCenterY = Math.sin(radians) * distance;
+    const radians = angle * (Math.PI / 180);
+    const shadowCenterX = Math.cos(radians) * distance;
+    const shadowCenterY = Math.sin(radians) * distance;
 
-    // Ajusta as coordenadas considerando o centro da imagem
-    const finalX = 50 + coneCenterX; // 50% é o centro da imagem
-    const finalY = 50 + coneCenterY; // 50% é o centro da imagem
+    const finalX = 50 + shadowCenterX;
+    const finalY = 50 + shadowCenterY;
 
-    return `
+    return css`
       top: ${finalY}%;
       left: ${finalX}%;
     `;
@@ -56,7 +68,6 @@ export const Image = styled.img`
   width: 14rem;
   height: 14rem;
   z-index: 2;
-  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.3);
 
   @media (min-width: 1200px) {
     width: 20rem;
@@ -66,15 +77,20 @@ export const Image = styled.img`
 
 export const ImageDefault = styled.div`
   border-radius: 100%;
-  width: 20rem;
-  height: 20rem;
+  width: 14rem;
+  height: 14rem;
   z-index: 2;
-  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.3);
+
   display: flex;
   align-items: center;
 
   svg {
     width: 100%;
     height: 75%;
+  }
+
+  @media (min-width: 1200px) {
+    width: 20rem;
+    height: 20rem;
   }
 `;

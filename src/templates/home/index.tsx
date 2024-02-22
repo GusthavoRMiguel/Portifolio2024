@@ -12,7 +12,7 @@ interface User {
   avatar_url: string;
 }
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   const [user, setUser] = useState<User | null>(null);
   const ano = new Date().getFullYear();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
         <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
           <UserInfo>
             <h1>
-              Ola, meu nome é <span>{user?.name}</span>, desenvolvedor web.
+              Olá, meu nome é <span>{user?.name},</span> desenvolvedor web.
             </h1>
             <FlexLinks>
               <Link href="https://github.com/GusthavoRMiguel" target="__blank">
@@ -86,7 +86,10 @@ const HomePage: React.FC = () => {
             </FlexLinks>
           </UserInfo>
 
-          <PhotoContainer imageUrl={user?.avatar_url || ''} />
+          <PhotoContainer
+            imageUrl={user?.avatar_url || ''}
+            isSidebarOpen={isSidebarOpen}
+          />
         </Content>
         <Footer className={isSidebarOpen ? 'sidebar-open' : ''}>
           <ul>

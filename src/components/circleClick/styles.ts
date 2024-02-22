@@ -1,37 +1,39 @@
 import styled from 'styled-components';
 import theme from '@/styles/theme';
 import { motion } from 'framer-motion';
+
 interface CircleProps {
-  mouseY: number | null;
-  mouseX: number | null;
-  isExpanded: boolean;
+  mousey: number | null;
+  mousex: number | null;
+  isexpanded: string;
 }
 
 export const Circle = styled(motion.div)<CircleProps>`
-  width: ${({ isExpanded }) => (isExpanded ? '30px' : '5px')};
-  height: ${({ isExpanded }) => (isExpanded ? '30px' : '5px')};
+  width: ${({ isexpanded }) => (isexpanded === 'true' ? '30px' : '5px')};
+  height: ${({ isexpanded }) => (isexpanded === 'true' ? '30px' : '5px')};
   border-radius: 50%;
-  background-color: ${({ isExpanded }) =>
-    isExpanded ? `${theme.colors.gray_300}` : 'transparent'};
-
+  background-color: ${({ isexpanded }) =>
+    isexpanded === 'true' ? theme.colors.gray_300 : 'transparent'};
   box-shadow: ${theme.box.shadow};
   position: fixed;
-  top: ${({ mouseY, isExpanded }) =>
-    isExpanded
-      ? `${mouseY ? mouseY - 15 : 0}px`
-      : mouseY
-      ? `${mouseY - 5}px`
+  top: ${({ mousey, isexpanded }) =>
+    isexpanded === 'true'
+      ? mousey
+        ? `${mousey - 15}px`
+        : '0'
+      : mousey
+      ? `${mousey - 5}px`
       : '50%'};
-
-  left: ${({ mouseX, isExpanded }) =>
-    isExpanded
-      ? `${mouseX ? mouseX - 15 : 0}px`
-      : mouseX
-      ? `${mouseX - 5}px`
+  left: ${({ mousex, isexpanded }) =>
+    isexpanded === 'true'
+      ? mousex
+        ? `${mousex - 15}px`
+        : '0'
+      : mousex
+      ? `${mousex - 5}px`
       : '50%'};
-
-  transform: ${({ mouseX, mouseY }) =>
-    mouseX && mouseY ? 'translate(-50%, -50%)' : 'none'};
-  display: ${({ isExpanded }) => (isExpanded ? 'block' : 'none')};
+  transform: ${({ mousex, mousey }) =>
+    mousex && mousey ? 'translate(-50%, -50%)' : 'none'};
+  display: ${({ isexpanded }) => (isexpanded === 'true' ? 'block' : 'none')};
   z-index: 9999;
 `;

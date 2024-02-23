@@ -53,16 +53,12 @@ export const ListCards = styled.div`
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 
-  ::-webkit-scrollbar-track {
-    background-color: #ccc !important;
-  }
-
   @media (max-width: 640px) {
     margin-top: 5vh;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     padding-inline: 0.5rem;
-    margin-left: 5vw;
-    width: 84vw;
+    margin-left: 4vw;
+    width: 82vw;
     height: 65vh;
   }
 `;

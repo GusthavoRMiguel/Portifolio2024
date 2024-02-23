@@ -19,13 +19,13 @@ export const Content = styled.main`
   left: 8vw;
   position: relative;
   transition: left ${(props) => props.theme.transition.default};
-  height: calc(100vh - 8vh);
-  width: 92vw;
+  height: 100vh;
+  width: 90vw;
   @media (min-width: 1020px) {
-    left: 5vw;
+    left: 4vw;
     width: 95vw;
     &.sidebar-open {
-      left: 20vw;
+      left: 19vw;
       width: 80vw;
     }
   }
@@ -214,18 +214,7 @@ export const TableInfo = styled.div`
   }
 `;
 
-export const Spacer = styled.div`
-  height: 8vh;
-  background-color: ${(props) => props.theme.colors.primary};
-  z-index: 2;
-
-  @media (max-width: 620px) {
-    height: 14vh;
-  }
-`;
-
 export const Footer = styled(motion.footer)`
-  position: fixed;
   bottom: 5px;
   left: 5vw;
   right: 0;

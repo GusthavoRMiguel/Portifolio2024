@@ -9,12 +9,13 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   flex-grow: 1;
-  width: 100%;
+  width: 95vw;
   left: 5vw;
-  position: relative;
+  position: absolute;
 
   &.open-sidebar {
     left: 20vw;
+    width: 80vw;
   }
 `;
 

@@ -28,9 +28,12 @@ const GlobalStyles = createGlobalStyle`
 
   @media (max-width: 600px) {
     ::-webkit-scrollbar {
-      width: 1px !important;
+      width: 2px !important;
     }
   }
+
+
+  
 
   html {
     max-width: 100vw;
@@ -43,7 +46,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: ${(props) => props.theme.font.sizes.medium};
     font-family: ${(props) => props.theme.font.family};
     background-color: ${(props) => props.theme.background.colors.primary};
- 
+  
   }
 
   body, input, textarea, button {

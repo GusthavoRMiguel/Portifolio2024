@@ -10,7 +10,6 @@ import {
   Heading,
   InfoGrid,
   ProgressContainer,
-  Spacer,
   TableInfo
 } from './styles';
 import Sidebar from '@/components/sideBar';
@@ -74,7 +73,6 @@ const AboutPage: React.FC = () => {
               estudando novas tecnologias.
             </p>
           </Bio>
-
           <InfoGrid>
             <div>
               <p>
@@ -140,11 +138,9 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
           </InfoGrid>
-
           <Download>
             <button onClick={handleDownloadResume}>Baixar Currículo</button>
           </Download>
-
           <ProgressContainer>
             <div>
               <div className="languages">
@@ -161,7 +157,6 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
           </ProgressContainer>
-
           <ProgressContainer>
             <div>
               <TableInfo>
@@ -210,22 +205,21 @@ const AboutPage: React.FC = () => {
                 </div>
               </TableInfo>
             </div>
-          </ProgressContainer>
+          </ProgressContainer>{' '}
+          <Footer className={isSidebarOpen ? 'sidebar-open' : ''}>
+            <ul>
+              <li>
+                <span>GUSTHAVO RAMOS MIGUEL</span>
+              </li>
+              <li>
+                <span>Copyright ©</span>
+              </li>
+              <li>
+                <span>{ano}</span>
+              </li>
+            </ul>
+          </Footer>
         </Content>
-        <Footer className={isSidebarOpen ? 'sidebar-open' : ''}>
-          <ul>
-            <li>
-              <span>GUSTHAVO RAMOS MIGUEL</span>
-            </li>
-            <li>
-              <span>Copyright ©</span>
-            </li>
-            <li>
-              <span>{ano}</span>
-            </li>
-          </ul>
-        </Footer>
-        <Spacer />
       </Container>
     </>
   );

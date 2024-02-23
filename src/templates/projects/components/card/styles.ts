@@ -43,7 +43,7 @@ export const Content = styled.div`
   }
 
   @media (max-width: 640px) {
-    width: 23rem;
+    width: 22rem;
     height: 32rem;
   }
 `;

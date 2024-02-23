@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import usePersistedState from './persistedState';
 import light from '@/styles/themes/light';
@@ -24,15 +24,30 @@ interface AppProviderProps {
 }
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
+  const [theme, setTheme] = usePersistedState<DefaultTheme | null>(
+    'theme',
+    null
+  );
+
+  useEffect(() => {
+    // Recuperar o tema do localStorage quando o componente for montado
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      const parsedTheme = JSON.parse(storedTheme);
+      setTheme(parsedTheme);
+    } else {
+      // Caso não haja tema no localStorage, definir o tema padrão como light
+      setTheme(light);
+    }
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
+    setTheme(theme?.title === 'light' ? dark : light);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    <ThemeContext.Provider value={{ theme: theme || light, toggleTheme }}>
+      {theme && <ThemeProvider theme={theme}>{children}</ThemeProvider>}
     </ThemeContext.Provider>
   );
 };

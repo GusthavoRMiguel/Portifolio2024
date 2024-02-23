@@ -1,4 +1,3 @@
-import theme from '@/styles/theme';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -9,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  background-color: ${theme.colors.gray_200};
+  background-color: ${(props) => props.theme.colors.primary};
   flex-grow: 1;
   width: 100%;
   left: 5vw;
@@ -53,7 +52,7 @@ export const BoxContact = styled.div`
     align-self: center;
     font-size: 3rem;
     line-height: 1;
-    color: ${theme.colors.blackQuantum};
+    color: ${(props) => props.theme.colors.text};
     letter-spacing: -0.025em;
     font-weight: 800;
     margin-bottom: 0.5rem;
@@ -92,7 +91,7 @@ export const BoxContact = styled.div`
     }
 
     &:hover {
-      color: ${theme.colors.blackQuantum};
+      color: ${(props) => props.theme.colors.text_hover};
     }
   }
 

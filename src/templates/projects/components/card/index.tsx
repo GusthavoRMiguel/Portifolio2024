@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Button } from 'semantic-ui-react';
+import { Button, ModalProps } from 'semantic-ui-react';
 import {
   BoxIcon,
   BoxImage,
@@ -8,6 +8,7 @@ import {
   Container,
   Content,
   FlippedContent,
+  ImageModal,
   Status,
   StyledModal
 } from './styles';
@@ -49,13 +50,32 @@ const Card: React.FC<CardProps> = ({
   const handleCardClick = () => {
     setIsFlipped(!isFlipped);
   };
-
-  const handleInfoModalOpen = () => {
+  const handleInfoModalOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     setInfoModalOpen(!infoModalOpen);
   };
 
-  const handleScreenShotsModalOpen = () => {
+  const handleScreenShotsModalOpen = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.stopPropagation();
     setScreenShotsModalOpen(!screenShotsModalOpen);
+  };
+
+  const handleInfoModalClose = (
+    event: React.MouseEvent<HTMLElement>,
+    _: ModalProps
+  ) => {
+    event.stopPropagation();
+    setInfoModalOpen(false);
+  };
+
+  const handleScreenShotsModalClose = (
+    event: React.MouseEvent<HTMLElement>,
+    _: ModalProps
+  ) => {
+    event.stopPropagation();
+    setScreenShotsModalOpen(false);
   };
 
   return (
@@ -119,12 +139,17 @@ const Card: React.FC<CardProps> = ({
       )}
 
       {infoModalOpen && (
-        <StyledModal open={infoModalOpen} onClose={handleInfoModalOpen}>
+        <StyledModal open={infoModalOpen} onClose={handleInfoModalClose}>
           <StyledModal.Header>Informações do Projeto</StyledModal.Header>
           <StyledModal.Content> {info}</StyledModal.Content>
 
           <StyledModal.Actions>
-            <Button onClick={handleInfoModalOpen} negative>
+            <Button
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                handleInfoModalClose(event, {})
+              }
+              negative
+            >
               Fechar
             </Button>
           </StyledModal.Actions>
@@ -133,12 +158,12 @@ const Card: React.FC<CardProps> = ({
       {screenShotsModalOpen && (
         <StyledModal
           open={screenShotsModalOpen}
-          onClose={handleScreenShotsModalOpen}
+          onClose={handleScreenShotsModalClose}
         >
           <StyledModal.Header>Capturas de tela do Projeto</StyledModal.Header>
-          <StyledModal.Content scrolling>
+          <StyledModal.Content scrolling className="gridImage">
             {screenShots?.map((shot, index) => (
-              <div key={index}>
+              <ImageModal key={index}>
                 <h3>{shot.imgTitle}</h3>
                 <Image
                   alt={shot.imgTitle}
@@ -146,12 +171,17 @@ const Card: React.FC<CardProps> = ({
                   width={400}
                   height={300}
                 />
-              </div>
+              </ImageModal>
             ))}
           </StyledModal.Content>
 
           <StyledModal.Actions>
-            <Button onClick={handleScreenShotsModalOpen} negative>
+            <Button
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+                handleScreenShotsModalClose(event, {})
+              }
+              negative
+            >
               Fechar
             </Button>
           </StyledModal.Actions>

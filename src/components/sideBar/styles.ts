@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import theme from '../../styles/theme';
 
 interface SideBarProps {
   open: boolean;
@@ -10,10 +9,10 @@ export const SidebarContainer = styled.div<SideBarProps>`
   left: ${({ open }) => (open ? '0' : '-90vw')};
   height: 100%;
   width: 100vw;
-  background-color: ${theme.colors.whiteSnow};
-  box-shadow: ${theme.box.shadow};
-  transition: left ${theme.transition.default};
-  z-index: ${theme.layers.modal};
+  background-color: ${(props) => props.theme.colors.sidebar};
+  box-shadow: ${(props) => props.theme.box.shadow};
+  transition: left ${(props) => props.theme.transition.default};
+  z-index: ${(props) => props.theme.layers.modal};
   justify-content: center;
   align-items: left;
   text-align: justify;
@@ -33,7 +32,7 @@ export const SidebarContainer = styled.div<SideBarProps>`
 export const ToggleButton = styled.button<SideBarProps>`
   background-color: transparent;
   border: none;
-  color: ${theme.colors.gray_300};
+  color: ${(props) => props.theme.colors.primary};
   cursor: pointer;
   width: fit-content;
   height: fit-content;
@@ -42,7 +41,7 @@ export const ToggleButton = styled.button<SideBarProps>`
   top: 1vh;
 
   &:hover {
-    color: ${theme.colors.blackQuantum};
+    color: ${(props) => props.theme.colors.secondary};
   }
   > svg {
     width: 20px;
@@ -64,7 +63,7 @@ export const Links = styled.div<SideBarProps>`
     gap: 10px;
     width: 100%;
     justify-content: center;
-    color: ${theme.colors.gray_300};
+    color: ${(props) => props.theme.colors.text};
     font-weight: 600;
     text-decoration: none;
     font-size: 0.95rem;
@@ -72,27 +71,17 @@ export const Links = styled.div<SideBarProps>`
     transition: color 0.3s ease;
     cursor: pointer;
     padding-left: 2rem;
-    padding-bottom: 3px;
-    padding-top: 3px;
+    padding-bottom: 4px;
+    padding-top: 4px;
     background: ${({ open }) =>
-      open
-        ? `linear-gradient(
-      90deg,
-      ${theme.colors.white} 0%,
-      ${theme.colors.gray_50} 15%,
-      ${theme.colors.gray_50} 50%,
-      ${theme.colors.gray_50} 85%,
-      ${theme.colors.white} 100%
-    )`
-        : 'transparent'};
+      open ? (props) => props.theme.background.linear.primary : 'transparent'};
     > svg {
       margin-left: ${({ open }) => (open ? '0' : 'auto')};
       margin-right: ${({ open }) => (open ? '0' : '2vw')};
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
 
       &:hover {
-        background-color: transparent;
         opacity: 0.5;
       }
     }
@@ -101,20 +90,10 @@ export const Links = styled.div<SideBarProps>`
   > button:hover,
   a:hover {
     background: ${({ open }) =>
-      open
-        ? `linear-gradient(
-      90deg,
-      ${theme.colors.white} 0%,
-      ${theme.colors.gray_300} 15%,
-      ${theme.colors.gray_300} 50%,
-      ${theme.colors.gray_300} 85%,
-      ${theme.colors.white} 100%
-    )`
-        : 'transparent'};
+      open ? (props) => props.theme.background.linear.hover : 'transparent'};
 
     font-weight: bolder;
     border: 20px 20px;
-    color: ${({ open }) =>
-      open ? ` ${theme.colors.white}` : `${theme.colors.blackQuantum}`};
+    color: ${(props) => props.theme.colors.text_hover};
   }
 `;

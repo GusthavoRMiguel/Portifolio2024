@@ -14,6 +14,7 @@ import Sidebar from '@/components/sideBar';
 import PageName from '@/components/pageName';
 import Card from './components/card';
 import Head from 'next/head';
+import CustomSwitch from '@/components/switchTheme';
 
 interface ScreenShot {
   imgTitle: string;
@@ -44,14 +45,18 @@ const ProjectsPage: React.FC = () => {
     {
       color: '#10b981',
       status: 'Online',
-      img: '/img/projects/logoSmart.svg',
-      icon: '/img/icons8-react.svg',
+      img: '/img/projects/SmartFactory/capa.svg',
+      icon: '/codeIcon/icons8-react.svg',
       title: 'SmartFactory',
       description: 'Interface de gerenciamento industrial.',
       link: 'https://smartfactory.com.br/',
       linkGithub: '',
       info: 'Projeto criado em react',
       screenShots: [
+        {
+          imgTitle: 'Capa do projeto',
+          imgSrc: '/img/projects/SmartFactory/capa.svg'
+        },
         { imgTitle: 'Teste', imgSrc: '/img/image-1.jpg' },
         { imgTitle: 'Teste 2', imgSrc: '/img/contact.png' }
       ]
@@ -60,7 +65,7 @@ const ProjectsPage: React.FC = () => {
       color: '#10b981',
       status: 'Online',
       img: '/img/projects/homePortifolio.png',
-      icon: '/img/icons8-nextjs.svg',
+      icon: '/codeIcon/icons8-nextjs.svg',
       title: 'Portifólio',
       description:
         'Página de portifólio desenvolvida em next com typescript e styled-components',
@@ -72,7 +77,7 @@ const ProjectsPage: React.FC = () => {
       color: '#10b981',
       status: 'Online',
       img: '/img/projects/homeKSG.png',
-      icon: '/img/icons8-nextjs.svg',
+      icon: '/codeIcon/icons8-nextjs.svg',
       title: 'KSG Vidros para Vans',
       description: 'Site expositório em NextJs com tailwind-css',
       link: 'https://ksg-vidros.vercel.app/',
@@ -83,7 +88,7 @@ const ProjectsPage: React.FC = () => {
       color: '#10b981',
       status: 'Online',
       img: '/img/projects/homeMultiFlix.png',
-      icon: '/img/icons8-javascript.svg',
+      icon: '/codeIcon/icons8-javascript.svg',
       title: 'Clone Netflix',
       description: 'Clone NetFlix em javascript com bootstrap  e carrousel.',
       link: 'https://mult-flix.vercel.app/',
@@ -94,7 +99,7 @@ const ProjectsPage: React.FC = () => {
       color: '#facc15',
       status: 'Em Desenvolvimento',
       img: '/img/projects/logoMS.png',
-      icon: '/img/icons8-react.svg',
+      icon: '/codeIcon/icons8-react.svg',
       title: 'Money Script',
       description:
         'Gestor de finanças desenvolvido em react e banco de dados firebase.',
@@ -112,6 +117,7 @@ const ProjectsPage: React.FC = () => {
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
+          <CustomSwitch />
           <Heading>
             <PageName page="Projetos" />
           </Heading>
@@ -125,10 +131,10 @@ const ProjectsPage: React.FC = () => {
                   icon={card.icon}
                   title={card.title}
                   description={card.description}
-                  link={card.link || ''}
-                  linkGithub={card.linkGithub || ''}
-                  info={card.info || ''}
-                  screenShots={card.screenShots || []}
+                  link={card.link}
+                  linkGithub={card.linkGithub}
+                  info={card.info}
+                  screenShots={card.screenShots}
                 />
               </CardPage>
             ))}

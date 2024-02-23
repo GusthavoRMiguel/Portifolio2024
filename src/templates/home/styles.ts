@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '@/styles/theme';
+
 import { motion } from 'framer-motion';
 
 export const Container = styled.main`
@@ -12,7 +12,7 @@ export const Content = styled.div`
   position: relative;
   left: 8vw;
   width: 92vw;
-  transition: left ${theme.transition.default};
+  transition: left ${(props) => props.theme.transition.default};
 
   @media (min-width: 1020px) {
     left: 5vw;
@@ -37,11 +37,13 @@ export const UserInfo = styled.div`
   gap: 4rem;
 
   h1 {
+    display: flow-root;
     font-size: 3.7rem;
+    color: ${(props) => props.theme.colors.text};
     span {
       font-size: 3.7rem;
       margin-left: 10px;
-      color: ${theme.colors.gray_500};
+      color: ${(props) => props.theme.colors.text};
       font-weight: 800;
     }
   }
@@ -113,7 +115,7 @@ export const Footer = styled(motion.footer)`
   right: 0;
   width: 95vw;
 
-  transition: left ${theme.transition.default};
+  transition: left ${(props) => props.theme.transition.default};
   &.sidebar-open {
     width: 80vw;
     left: 20vw;
@@ -130,10 +132,10 @@ export const Footer = styled(motion.footer)`
       font-size: 0.5rem;
       span {
         text-decoration: none;
-        color: ${theme.colors.gray_300};
+        color: ${(props) => props.theme.colors.text};
 
         &:hover {
-          color: ${theme.colors.blackQuantum};
+          color: ${(props) => props.theme.colors.text_hover};
           font-weight: 800;
           cursor: pointer;
         }

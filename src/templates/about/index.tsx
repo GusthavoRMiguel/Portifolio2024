@@ -18,6 +18,7 @@ import PageName from '@/components/pageName';
 import Head from 'next/head';
 import Timeline from './components/TimeLine';
 import ProgLanguage from './components/ProgLanguage';
+import CustomSwitch from '@/components/switchTheme';
 
 const AboutPage: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -58,6 +59,7 @@ const AboutPage: React.FC = () => {
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
+          <CustomSwitch />
           <Heading>
             <PageName page="Sobre Mim" />
           </Heading>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '@/styles/theme';
+
 import { motion } from 'framer-motion';
 
 interface CircleProps {
@@ -13,8 +13,10 @@ export const Circle = styled(motion.div)<CircleProps>`
   height: ${({ isexpanded }) => (isexpanded === 'true' ? '30px' : '5px')};
   border-radius: 50%;
   background-color: ${({ isexpanded }) =>
-    isexpanded === 'true' ? theme.colors.gray_300 : 'transparent'};
-  box-shadow: ${theme.box.shadow};
+    isexpanded === 'true'
+      ? (props) => props.theme.colors.secondary
+      : 'transparent'};
+  box-shadow: ${(props) => props.theme.box.shadow};
   position: fixed;
   top: ${({ mousey, isexpanded }) =>
     isexpanded === 'true'

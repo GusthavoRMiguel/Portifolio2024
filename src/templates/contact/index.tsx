@@ -26,6 +26,7 @@ import {
 import Sidebar from '@/components/sideBar';
 import PageName from '@/components/pageName';
 import Link from 'next/link';
+import CustomSwitch from '@/components/switchTheme';
 
 const ContactSchema = yup.object().shape({
   name: yup
@@ -89,6 +90,7 @@ const ContactPage: React.FC = () => {
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'open-sidebar' : ''}>
+          <CustomSwitch />
           <BoxMain>
             <PageName page="Contato" />
 

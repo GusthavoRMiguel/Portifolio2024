@@ -6,6 +6,7 @@ import Sidebar from '@/components/sideBar';
 import Link from 'next/link';
 import PhotoContainer from './components/PhotoContainer';
 import Head from 'next/head';
+import CustomSwitch from '@/components/switchTheme';
 
 interface User {
   name: string;
@@ -32,13 +33,13 @@ const HomePage = () => {
 
   return (
     <>
-      {' '}
       <Head>
         <title>Home | Gusthavo Ramos</title>
       </Head>
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
+          <CustomSwitch />
           <UserInfo>
             <h1>
               Olá, meu nome é <span>{user?.name},</span> desenvolvedor web.

@@ -1,4 +1,3 @@
-import theme from '@/styles/theme';
 import { Modal } from 'semantic-ui-react';
 import styled from 'styled-components';
 
@@ -24,22 +23,22 @@ export const Container = styled.div<FlipProps>`
 `;
 
 export const Content = styled.div`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   width: 26rem;
   height: 32rem;
   position: relative;
   padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   border-radius: 0.5rem;
-  color: #2d3748;
+  color: ${(props) => props.theme.colors.text_tertiary};
 
   &:hover {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
-    background-color: ${theme.colors.gray_500};
+    background-color: ${(props) => props.theme.colors.tertiary};
     cursor: grabbing;
     border-width: 2px;
     border-color: #4f46e5;
-    color: #edf2f7;
+    color: ${(props) => props.theme.colors.text_tertiary_hover};
     opacity: 0.75;
   }
 
@@ -55,8 +54,9 @@ export const FlippedContent = styled.div<FlipProps>`
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  height: 100%;
+  height: fit-content;
   place-content: center;
+  margin-top: 25%;
 
   p {
     cursor: not-allowed;
@@ -67,8 +67,8 @@ export const FlippedContent = styled.div<FlipProps>`
     justify-content: center;
     font-weight: 600;
     font-size: 1rem;
-    background-color: ${theme.colors.gray_300};
-    color: white;
+    background-color: ${(props) => props.theme.colors.primary};
+    color: #edf2f7;
   }
 
   > a,
@@ -81,8 +81,17 @@ export const FlippedContent = styled.div<FlipProps>`
     justify-content: center;
     font-weight: 600;
     font-size: 1rem;
-    background-color: ${theme.colors.gray_300};
-    color: white;
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.text};
+  }
+
+  > a,
+  p,
+  button {
+    &:hover {
+      background-color: ${(props) => props.theme.colors.secondary};
+      color: ${(props) => props.theme.colors.text_hover};
+    }
   }
 `;
 
@@ -147,4 +156,29 @@ export const BoxText = styled.div`
   }
 `;
 
-export const StyledModal = styled(Modal)``;
+export const StyledModal = styled(Modal)`
+  .gridImage {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem;
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(1, 1fr) !important;
+    }
+  }
+`;
+
+export const ImageModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+
+  @media (max-width: 640px) {
+    justify-self: center;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 200px;
+    }
+  }
+`;

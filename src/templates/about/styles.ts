@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '@/styles/theme';
+
 import { motion } from 'framer-motion';
 
 export const Container = styled.div`
@@ -18,7 +18,7 @@ export const Content = styled.main`
   flex-direction: column;
   left: 8vw;
   position: relative;
-  transition: left ${theme.transition.default};
+  transition: left ${(props) => props.theme.transition.default};
   height: calc(100vh - 8vh);
   width: 92vw;
   @media (min-width: 1020px) {
@@ -216,7 +216,7 @@ export const TableInfo = styled.div`
 
 export const Spacer = styled.div`
   height: 8vh;
-  background-color: ${theme.colors.blackQuantum};
+  background-color: ${(props) => props.theme.colors.primary};
   z-index: 2;
 
   @media (max-width: 620px) {
@@ -231,7 +231,7 @@ export const Footer = styled(motion.footer)`
   right: 0;
   width: 95vw;
 
-  transition: left ${theme.transition.default};
+  transition: left ${(props) => props.theme.transition.default};
   &.sidebar-open {
     width: 80vw;
     left: 20vw;
@@ -248,10 +248,10 @@ export const Footer = styled(motion.footer)`
       font-size: 0.5rem;
       span {
         text-decoration: none;
-        color: ${theme.colors.gray_300};
+        color: ${(props) => props.theme.colors.text};
 
         &:hover {
-          color: ${theme.colors.green};
+          color: ${(props) => props.theme.colors.text_hover};
         }
       }
     }

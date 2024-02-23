@@ -1,4 +1,3 @@
-import theme from '@/styles/theme';
 import styled, { css } from 'styled-components';
 
 export const ShadowContainer = styled.div`
@@ -6,7 +5,7 @@ export const ShadowContainer = styled.div`
   top: 30vh;
   right: 35vw;
 
-  transition: right ${theme.transition.default};
+  transition: right ${(props) => props.theme.transition.default};
 
   &.sidebar-open {
     top: 30vh;
@@ -38,7 +37,7 @@ export const ShadowBase = styled.div<ShadowBaseProps>`
   border-top: 0 solid transparent;
   border-bottom: 0 solid transparent;
   border-left: 19rem solid white;
-  box-shadow: 20px 0px 20px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: ${(props) => props.theme.box.shadow_secondary};
   z-index: -1;
   border-radius: 100%;
 

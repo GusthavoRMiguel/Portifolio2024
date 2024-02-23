@@ -1,9 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
-import theme from './theme';
 
 const GlobalStyles = createGlobalStyle`
-
-
   * {
     margin: 0;
     padding: 0;
@@ -11,51 +8,46 @@ const GlobalStyles = createGlobalStyle`
     outline: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-family: ${theme.font.family};
-    ::-webkit-scrollbar-thumb {
-    background-color: ${theme.colors.gray_300} !important;
-   }
-    ::-webkit-scrollbar-track {
-    background-color: ${theme.colors.gray_50}!important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${(props) =>
+      props.theme.colors.scrollbar_thumb} !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${(props) =>
+      props.theme.colors.scrollbar_track} !important;
     border-radius: 35px !important;
-   }
-    ::-webkit-scrollbar {
+  }
+
+  ::-webkit-scrollbar {
     width: 10px !important;
     border-radius: 35px !important;
-    }
-
-    @media (max-width: 600px) {
-     ::-webkit-scrollbar {
-       width: 1px !important;
-     }
-
-  }
   }
 
-  ${({ theme }) => css`
-    html {
-      max-width: 100vw;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility !important;
+  @media (max-width: 600px) {
+    ::-webkit-scrollbar {
+      width: 1px !important;
     }
+  }
 
-    body {
-      font-size: ${theme.font.sizes.medium};
-      background-color: ${theme.colors.gray_50};
-    }
+  html {
+    max-width: 100vw;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility !important;
+  }
 
-    body,
-    input,
-    textarea,
-    button {
-      font-size: 10px;
-      font-family: ${theme.font.family};
-    }
-  `}
+  body {
+    font-size: ${(props) => props.theme.font.sizes.medium};
+    font-family: ${(props) => props.theme.font.family};
+    background-color: ${(props) => props.theme.background.colors.primary};
+  }
+
+  body, input, textarea, button {
+    font-size: 1.6rem; 
+  }
 
   button {
     cursor: pointer;
@@ -71,12 +63,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: normal;
     display: flex;
     align-items: center;
-    font-family: ${theme.font.family};
   }
-
-
-
-
 `;
 
 export default GlobalStyles;

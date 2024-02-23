@@ -47,8 +47,8 @@ export const UserInfo = styled.div`
       font-weight: 800;
     }
   }
-  @media (max-width: 940px) {
-    margin-top: 30vh;
+  @media (max-width: 640px) {
+    margin-top: 35vh;
     text-align: center;
     h1 {
       display: grid;

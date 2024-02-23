@@ -4,13 +4,6 @@ import { motion } from 'framer-motion';
 
 export const Container = styled.div`
   display: flex;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-
-  @media (max-width: 640px) {
-    overflow-y: auto;
-  }
 `;
 
 export const Content = styled.main`

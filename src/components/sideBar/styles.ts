@@ -46,10 +46,14 @@ export const ToggleButton = styled.button<SideBarProps>`
   > svg {
     width: 20px;
     height: 20px;
+
+    &:hover {
+      color: ${(props) => props.theme.colors.secondary};
+      background-color: transparent;
+      opacity: 0.5;
+    }
   }
   > svg:hover {
-    background-color: transparent;
-    opacity: 0.5;
   }
 `;
 export const Links = styled.div<SideBarProps>`

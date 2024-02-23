@@ -6,8 +6,8 @@ export default {
   },
   background: {
     colors: {
-      primary: '#DAF0EE',
-      secondary: '#353B3C'
+      primary: '#dee4ec',
+      secondary: '#d9e4f1'
     },
     linear: {
       primary: `linear-gradient(90deg,
@@ -44,16 +44,16 @@ export default {
   colors: {
     scrollbar_thumb: '#343a40',
     scrollbar_track: '#f0efeb',
-    sidebar: '#0C3A56',
-    primary: '#94D1BE',
-    secondary: '#9DB5B2',
-    tertiary: '#3B413C',
-    text: '#353B3C',
-    text_hover: '#353B3C',
-    text_secondary: '#EEF0F2',
-    text_secondary_hover: '#F4F4F9',
-    text_tertiary: '#593535',
-    text_tertiary_hover: '#7f5555',
+    sidebar: '#438480',
+    primary: '#c2c3b3',
+    secondary: '#a3c8ba',
+    tertiary: '#e9eae1',
+    text: '#73989b',
+    text_hover: '#a9aa8d',
+    text_secondary: '#5c7e83',
+    text_secondary_hover: '#5f8d89',
+    text_tertiary: '#c9d4c3',
+    text_tertiary_hover: '#d5ede1',
     overlay: 'rgba(0, 0, 0, 0.2)',
     white: '#fff'
   },

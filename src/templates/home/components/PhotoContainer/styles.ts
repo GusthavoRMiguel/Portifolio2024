@@ -12,12 +12,12 @@ export const ShadowContainer = styled.div`
     right: 20vw;
   }
 
-  @media (max-width: 940px) {
-    top: 5vh;
+  @media (max-width: 640px) {
+    top: 12vh;
     right: 22vw;
 
     &.sidebar-open {
-      top: 5vh;
+      top: 12vh;
       right: 22vw;
     }
   }

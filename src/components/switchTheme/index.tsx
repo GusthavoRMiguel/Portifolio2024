@@ -12,9 +12,9 @@ const CustomSwitch = () => {
       <StyledSwitch
         onChange={toggleTheme}
         checked={theme.title === 'light'}
+        handleDiameter={40}
         height={40}
         width={120}
-        handleDiameter={40}
         activeBoxShadow={`0px 0px 2px 3px ${theme.colors.secondary}`}
         checkedIcon={
           <UncheckedIcon>

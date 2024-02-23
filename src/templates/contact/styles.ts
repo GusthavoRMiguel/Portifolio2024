@@ -8,7 +8,6 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  background-color: ${(props) => props.theme.colors.primary};
   flex-grow: 1;
   width: 100%;
   left: 5vw;

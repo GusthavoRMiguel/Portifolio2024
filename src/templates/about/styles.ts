@@ -21,6 +21,7 @@ export const Content = styled.main`
   transition: left ${(props) => props.theme.transition.default};
   height: 100vh;
   width: 90vw;
+
   @media (min-width: 1020px) {
     left: 4vw;
     width: 95vw;
@@ -49,6 +50,7 @@ export const Bio = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
+  color: ${(props) => props.theme.colors.text};
 
   h1 {
     margin-top: 8px;
@@ -74,6 +76,7 @@ export const InfoGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1px;
+  color: ${(props) => props.theme.colors.text};
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(3, 1fr);
@@ -133,6 +136,7 @@ export const Download = styled.div`
 export const ProgressContainer = styled.div`
   margin-top: 4rem;
   margin-bottom: 4rem;
+  color: ${(props) => props.theme.colors.text};
 
   > div:first-child {
     display: grid;
@@ -171,7 +175,7 @@ export const ProgressContainer = styled.div`
 export const TableInfo = styled.div`
   font-size: 1rem;
   padding-inline: 2rem;
-
+  color: ${(props) => props.theme.colors.text_tertiary};
   @media (min-width: 1024px) {
     padding-inline: 8rem;
   }

@@ -64,7 +64,7 @@ const ProjectsPage: React.FC = () => {
     {
       color: '#10b981',
       status: 'Online',
-      img: '/img/projects/homePortifolio.png',
+      img: '/img/projects/Portifólio/capa.png',
       icon: '/codeIcon/icons8-nextjs.svg',
       title: 'Portifólio',
       description:
@@ -76,7 +76,7 @@ const ProjectsPage: React.FC = () => {
     {
       color: '#10b981',
       status: 'Online',
-      img: '/img/projects/homeKSG.png',
+      img: '/img/projects/KSG/capa.png',
       icon: '/codeIcon/icons8-nextjs.svg',
       title: 'KSG Vidros para Vans',
       description: 'Site expositório em NextJs com tailwind-css',
@@ -87,7 +87,7 @@ const ProjectsPage: React.FC = () => {
     {
       color: '#10b981',
       status: 'Online',
-      img: '/img/projects/homeMultiFlix.png',
+      img: '/img/projects/MultiFlix/capa.png',
       icon: '/codeIcon/icons8-javascript.svg',
       title: 'Clone Netflix',
       description: 'Clone NetFlix em javascript com bootstrap  e carrousel.',
@@ -98,7 +98,7 @@ const ProjectsPage: React.FC = () => {
     {
       color: '#facc15',
       status: 'Em Desenvolvimento',
-      img: '/img/projects/logoMS.png',
+      img: '/img/projects/MS/capa.png',
       icon: '/codeIcon/icons8-react.svg',
       title: 'Money Script',
       description:

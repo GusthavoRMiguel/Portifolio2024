@@ -53,10 +53,6 @@ export const ListCards = styled.div`
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 
-  ::-webkit-scrollbar-track {
-    background-color: #ccc !important;
-  }
-
   @media (max-width: 640px) {
     margin-top: 5vh;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

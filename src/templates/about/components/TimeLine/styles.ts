@@ -21,7 +21,7 @@ export const TimelineDot = styled.div`
 export const TimelineText = styled.div`
   flex: 1;
   margin-left: 1rem;
-  color: #9ca3af;
+  color: black;
   font-size: 0.875rem;
   font-weight: 500;
 `;

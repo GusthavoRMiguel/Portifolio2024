@@ -1,3 +1,5 @@
+'use client';
+
 import { useTheme } from '@/hooks';
 import { Container, StyledSwitch, UncheckedIcon } from './styles';
 import { RiSunLine, RiMoonClearLine } from 'react-icons/ri';

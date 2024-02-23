@@ -43,6 +43,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: ${(props) => props.theme.font.sizes.medium};
     font-family: ${(props) => props.theme.font.family};
     background-color: ${(props) => props.theme.background.colors.primary};
+ 
   }
 
   body, input, textarea, button {
@@ -63,6 +64,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: normal;
     display: flex;
     align-items: center;
+    
   }
 `;
 

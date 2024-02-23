@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import usePersistedState from './persistedState';
 import light from '@/styles/themes/light';
 import dark from '@/styles/themes/dark';
+import LoadingPage from '@/components/loadingPage';
 
 interface ThemeContextType {
   theme: DefaultTheme;
@@ -24,30 +25,33 @@ interface AppProviderProps {
 }
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  const [theme, setTheme] = usePersistedState<DefaultTheme | null>(
-    'theme',
-    null
-  );
+  const [isLoading, setIsLoading] = useState(true);
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
 
   useEffect(() => {
-    // Recuperar o tema do localStorage quando o componente for montado
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      const parsedTheme = JSON.parse(storedTheme);
-      setTheme(parsedTheme);
-    } else {
-      // Caso não haja tema no localStorage, definir o tema padrão como light
-      setTheme(light);
-    }
+    setTimeout(() => {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme) {
+        const parsedTheme = JSON.parse(storedTheme);
+        setTheme(parsedTheme);
+      } else {
+        setTheme(light);
+      }
+      setIsLoading(false);
+    }, 2000);
   }, []);
 
   const toggleTheme = () => {
-    setTheme(theme?.title === 'light' ? dark : light);
+    setTheme(theme.title === 'light' ? dark : light);
   };
 
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
   return (
-    <ThemeContext.Provider value={{ theme: theme || light, toggleTheme }}>
-      {theme && <ThemeProvider theme={theme}>{children}</ThemeProvider>}
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
 };

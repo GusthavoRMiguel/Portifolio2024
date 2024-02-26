@@ -22,8 +22,7 @@ interface ScreenShot {
 }
 
 interface CardProps {
-  color: string;
-  status: string;
+  status: 'Em Desenvolvimento' | 'Online' | 'Pausado';
   img: string;
   icon: string;
   title: string;
@@ -43,7 +42,6 @@ const ProjectsPage: React.FC = () => {
 
   const cardData: CardProps[] = [
     {
-      color: '#10b981',
       status: 'Online',
       img: '/img/projects/SmartFactory/capa.svg',
       icon: '/codeIcon/icons8-react.svg',
@@ -54,15 +52,60 @@ const ProjectsPage: React.FC = () => {
       info: 'Projeto criado em react',
       screenShots: [
         {
-          imgTitle: 'Capa do projeto',
-          imgSrc: '/img/projects/SmartFactory/capa.svg'
+          imgTitle: 'Tela Inicial ( PC )',
+          imgSrc: '/img/projects/SmartFactory/TelaInicialPC.png'
         },
-        { imgTitle: 'Teste', imgSrc: '/img/image-1.jpg' },
-        { imgTitle: 'Teste 2', imgSrc: '/img/contact.png' }
+        {
+          imgTitle: 'Tela Inicial ( Tablet )',
+          imgSrc: '/img/projects/SmartFactory/TelaInicialTab.png'
+        },
+        {
+          imgTitle: 'Tela Inicial ( Smartphone )',
+          imgSrc: '/img/projects/SmartFactory/TelaInicialMob1.png'
+        },
+        {
+          imgTitle: 'Tela Inicial parte 2 ( Smartphone )',
+          imgSrc: '/img/projects/SmartFactory/TelaInicialMob2.png'
+        },
+
+        {
+          imgTitle: 'Tela Gestão Simplificada ( PC )',
+          imgSrc: '/img/projects/SmartFactory/TelaGestaoSimplificadaPC.png'
+        },
+        {
+          imgTitle: 'Tela Gestão Simplificada ( Smartphone )',
+          imgSrc: '/img/projects/SmartFactory/TelaGestaoSimplificadaMob.png'
+        },
+        {
+          imgTitle: 'Tela Gestão Simplificada ( Tablet )',
+          imgSrc: '/img/projects/SmartFactory/TelaGestaoSimplificadaTab.png'
+        },
+
+        {
+          imgTitle: 'Tela Gestão Completa ( PC )',
+          imgSrc: '/img/projects/SmartFactory/TelaGestaoCompletaPC.png'
+        },
+        {
+          imgTitle: 'Tela Gestão Completa ( Tablet )',
+          imgSrc: '/img/projects/SmartFactory/TelaGestaoCompletaTab.png'
+        },
+        {
+          imgTitle: 'Tela Gestão Completa ( Smartphone )',
+          imgSrc: '/img/projects/SmartFactory/TelaGestaoCompletaMob.png'
+        }
       ]
     },
     {
-      color: '#10b981',
+      status: 'Em Desenvolvimento',
+      img: '/img/projects/YG/capa.png',
+      icon: '/codeIcon/icons8-react.svg',
+      title: 'You Garage',
+      description: 'Site para compra e venda de veículos',
+      link: '',
+      linkGithub: '',
+      info: 'Projeto criado em react'
+    },
+    {
       status: 'Online',
       img: '/img/projects/Portifólio/capa.png',
       icon: '/codeIcon/icons8-nextjs.svg',
@@ -74,7 +117,6 @@ const ProjectsPage: React.FC = () => {
       info: 'Projeto criado em react'
     },
     {
-      color: '#10b981',
       status: 'Online',
       img: '/img/projects/KSG/capa.png',
       icon: '/codeIcon/icons8-nextjs.svg',
@@ -85,7 +127,6 @@ const ProjectsPage: React.FC = () => {
       info: 'Projeto criado em react'
     },
     {
-      color: '#10b981',
       status: 'Online',
       img: '/img/projects/MultiFlix/capa.png',
       icon: '/codeIcon/icons8-javascript.svg',
@@ -96,7 +137,6 @@ const ProjectsPage: React.FC = () => {
       info: 'Projeto criado em react'
     },
     {
-      color: '#facc15',
       status: 'Em Desenvolvimento',
       img: '/img/projects/MS/capa.png',
       icon: '/codeIcon/icons8-react.svg',
@@ -124,7 +164,6 @@ const ProjectsPage: React.FC = () => {
             {cardData.map((card, index) => (
               <CardPage key={index}>
                 <Card
-                  color={card.color}
                   status={card.status}
                   img={card.img}
                   icon={card.icon}

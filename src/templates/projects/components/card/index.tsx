@@ -19,20 +19,18 @@ interface ScreenShot {
 }
 
 interface CardProps {
-  color: string;
   link?: string;
   linkGithub?: string;
   info?: string;
   screenShots?: ScreenShot[];
   img: string;
-  status: string;
+  status: 'Em Desenvolvimento' | 'Online' | 'Pausado';
   icon: string;
   title: string;
   description: string;
 }
 
 const Card: React.FC<CardProps> = ({
-  color,
   link,
   linkGithub,
   info,
@@ -127,7 +125,17 @@ const Card: React.FC<CardProps> = ({
           <BoxImage>
             <Image alt="image" src={img} width={140} height={40} />
           </BoxImage>
-          <Status color={color}>{status}</Status>
+          <Status
+            color={
+              status === 'Em Desenvolvimento'
+                ? '#facc15'
+                : status === 'Online'
+                ? '#10b981'
+                : '#FF0000 '
+            }
+          >
+            {status}
+          </Status>
           <BoxIcon>
             <Image alt="icon" src={icon} width={64} height={64} />
           </BoxIcon>

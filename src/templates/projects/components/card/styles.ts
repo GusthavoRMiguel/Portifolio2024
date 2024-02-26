@@ -157,6 +157,13 @@ export const BoxText = styled.div`
 `;
 
 export const StyledModal = styled(Modal)`
+  .ui.modal.scrolling.content {
+    padding: 1rem;
+  }
+
+  .ui.modal > .content {
+    padding: 1rem !important;
+  }
   .gridImage {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
@@ -172,6 +179,11 @@ export const ImageModal = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
+  align-items: center;
+  background-color: ${(props) => props.theme.colors.tertiary};
+  padding: 1rem;
+  border-radius: 10px;
+  gap: 10px;
 
   @media (max-width: 640px) {
     justify-self: center;

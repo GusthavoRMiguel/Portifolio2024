@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import api from '@/pages/api';
 
-import { Container, Content, FlexLinks, Footer, UserInfo } from './styles';
+import {
+  Container,
+  Content,
+  FlexLinks,
+  Footer,
+  Heading,
+  UserInfo
+} from './styles';
 import Sidebar from '@/components/sideBar';
 import Link from 'next/link';
 import PhotoContainer from './components/PhotoContainer';
@@ -38,8 +45,10 @@ const HomePage = () => {
       </Head>
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
-        <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
+        <Heading>
           <CustomSwitch />
+        </Heading>
+        <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
           <UserInfo>
             <h1>
               Olá, meu nome é <span>{user?.name},</span> desenvolvedor web.

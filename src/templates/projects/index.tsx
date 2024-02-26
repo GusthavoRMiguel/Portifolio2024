@@ -117,9 +117,8 @@ const ProjectsPage: React.FC = () => {
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
-          <CustomSwitch />
           <Heading>
-            <PageName page="Projetos" />
+            <PageName page="Projetos" /> <CustomSwitch />
           </Heading>
           <ListCards>
             {cardData.map((card, index) => (

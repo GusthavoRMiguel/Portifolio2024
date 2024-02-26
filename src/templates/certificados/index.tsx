@@ -156,9 +156,8 @@ const CertificatesPage: React.FC = () => {
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'sidebar-open' : ''}>
-          <CustomSwitch />
           <Heading>
-            <PageName page="Certificados" />
+            <PageName page="Certificados" /> <CustomSwitch />
           </Heading>
           <ListCards>
             {cardData.map((card, index) => (

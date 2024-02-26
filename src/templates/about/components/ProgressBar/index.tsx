@@ -2,7 +2,7 @@ import {
   LanguageContainer,
   LanguageText,
   PercentageText,
-  ProgressBar,
+  Bar,
   ProgressBarContainer
 } from './styles';
 
@@ -12,17 +12,17 @@ interface LanguageProps {
   width: string;
 }
 
-function ProgLanguage({ language, percent, width }: LanguageProps) {
+function ProgressBar({ language, percent, width }: LanguageProps) {
   return (
     <LanguageContainer>
       <LanguageText>{language}</LanguageText>
       <ProgressBarContainer>
-        <ProgressBar width={width}>
+        <Bar width={width}>
           <PercentageText>{percent}%</PercentageText>
-        </ProgressBar>
+        </Bar>
       </ProgressBarContainer>
     </LanguageContainer>
   );
 }
 
-export default ProgLanguage;
+export default ProgressBar;

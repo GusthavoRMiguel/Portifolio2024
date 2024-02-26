@@ -55,7 +55,9 @@ export default {
     text_tertiary: '#c9d4c3',
     text_tertiary_hover: '#d5ede1',
     overlay: 'rgba(0, 0, 0, 0.2)',
-    white: '#fff'
+    white: '#fff',
+    purple: '#7c3aed',
+    blue: '#4f46e5'
   },
   layers: {
     base: 10,

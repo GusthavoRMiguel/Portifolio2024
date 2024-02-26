@@ -10,8 +10,8 @@ export const Content = styled.div`
   padding: 3rem;
   display: flex;
   position: relative;
-  left: 8vw;
-  width: 92vw;
+  left: 6vw;
+  width: 94vw;
   transition: left ${(props) => props.theme.transition.default};
 
   @media (min-width: 1020px) {
@@ -28,6 +28,23 @@ export const Content = styled.div`
     &.sidebar-open {
       left: 15vw;
     }
+  }
+`;
+
+export const Heading = styled.div`
+  display: flex;
+  position: absolute;
+  z-index: ${(props) => props.theme.layers.base};
+  top: 0;
+  right: 0;
+  padding-top: 1.5rem;
+  padding-inline: 2rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: 640px) {
+    padding-top: 1rem;
+    padding-inline: 1rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -48,13 +65,15 @@ export const UserInfo = styled.div`
     }
   }
   @media (max-width: 640px) {
-    margin-top: 35vh;
+    margin-top: 40vh;
     text-align: center;
     h1 {
       display: grid;
-      font-size: 2.1rem;
+      font-size: 1.8rem;
       span {
-        font-size: 2.1rem;
+        font-size: 1.8rem;
+        color: ${(props) => props.theme.colors.text_secondary};
+        min-inline-size: max-content;
       }
     }
   }

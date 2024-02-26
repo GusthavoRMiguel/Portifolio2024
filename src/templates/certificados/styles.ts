@@ -32,10 +32,18 @@ export const Content = styled.main`
 `;
 
 export const Heading = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding-top: 1.5rem;
   padding-inline: 2rem;
-  margin-bottom: 2vh;
+  margin-bottom: 3rem;
+
+  @media (max-width: 640px) {
+    padding-top: 1rem;
+    padding-inline: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const ListCards = styled.div`

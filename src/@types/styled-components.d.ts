@@ -49,6 +49,8 @@ declare module 'styled-components' {
       text_tertiary_hover: string;
       overlay: string;
       white: string;
+      purple: string;
+      blue: string;
     };
     layers: {
       base: number;

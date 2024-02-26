@@ -3,13 +3,6 @@ import Switch from 'react-switch';
 
 export const Container = styled.div`
   display: flex;
-  position: absolute;
-  top: 1vh;
-  right: 1vw;
-
-  @media (max-width: 640px) {
-    right: 4vw;
-  }
 `;
 
 export const StyledSwitch = styled(Switch)`

@@ -21,7 +21,8 @@ import {
   BoxImage,
   BoxContact,
   BoxMain,
-  BoxForm
+  BoxForm,
+  Heading
 } from './styles';
 import Sidebar from '@/components/sideBar';
 import PageName from '@/components/pageName';
@@ -90,7 +91,11 @@ const ContactPage: React.FC = () => {
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'open-sidebar' : ''}>
-          <CustomSwitch />
+          <Heading>
+            {' '}
+            <CustomSwitch />
+          </Heading>
+
           <BoxMain>
             <PageName page="Contato" />
 

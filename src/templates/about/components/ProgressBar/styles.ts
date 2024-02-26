@@ -18,18 +18,17 @@ export const ProgressBarContainer = styled.div`
   border-radius: 9999px;
 `;
 
-export const ProgressBar = styled.div<LanguageProps>`
+export const Bar = styled.div<LanguageProps>`
   background-color: #7c3aed;
   padding: 0.125rem 0;
   border-radius: 9999px;
   width: ${(props) => props.width};
+  display: flex;
+  justify-content: center;
 `;
 
 export const PercentageText = styled.div`
   color: #ffffff;
   font-size: 0.75rem;
-  background-color: #805ad5;
   padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
-  display: inline-block;
 `;

@@ -13,12 +13,12 @@ export const ShadowContainer = styled.div`
   }
 
   @media (max-width: 640px) {
-    top: 12vh;
-    right: 22vw;
+    top: 11vh;
+    right: 19vw;
 
     &.sidebar-open {
-      top: 12vh;
-      right: 22vw;
+      top: 11vh;
+      right: 19vw;
     }
   }
 `;
@@ -32,11 +32,10 @@ export const ShadowBase = styled.div<ShadowBaseProps>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(${({ angle }) => angle}deg);
-
-  height: 20rem;
+  height: 13rem;
   border-top: 0 solid transparent;
   border-bottom: 0 solid transparent;
-  border-left: 19rem solid white;
+  border-left: 12rem solid white;
   box-shadow: ${(props) => props.theme.box.shadow_secondary};
   z-index: -1;
   border-radius: 100%;
@@ -57,8 +56,9 @@ export const ShadowBase = styled.div<ShadowBaseProps>`
     `;
   }}
 
-  @media (max-width:940px) {
-    display: none;
+  @media (min-width:1200px) {
+    height: 20rem;
+    border-left: 19rem solid white;
   }
 `;
 

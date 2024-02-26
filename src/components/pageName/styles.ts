@@ -12,6 +12,11 @@ export const PageTitle = styled.h1`
   text-align: left;
   margin-top: 1.25rem;
   color: ${(props) => props.theme.colors.text};
+
+  @media (max-width: 640px) {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
 `;
 
 export const BorderLine = styled.p<BorderLineProps>`

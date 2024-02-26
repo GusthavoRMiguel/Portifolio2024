@@ -7,6 +7,22 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 
+export const Heading = styled.div`
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-top: 1.5rem;
+  padding-inline: 2rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: 640px) {
+    padding-top: 1rem;
+    padding-inline: 1rem;
+    margin-bottom: 2rem;
+  }
+`;
+
 export const Content = styled.div`
   flex-grow: 1;
   width: 95vw;

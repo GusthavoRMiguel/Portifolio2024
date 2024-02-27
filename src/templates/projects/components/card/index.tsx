@@ -86,6 +86,10 @@ const Card: React.FC<CardProps> = ({
     setScreenShotsModalOpen(false);
   };
 
+  const handleModalClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+  };
+
   return (
     <Container onClick={handleCardClick} isFlipped={isFlipped}>
       {isFlipped ? (
@@ -177,6 +181,7 @@ const Card: React.FC<CardProps> = ({
         <StyledModal
           open={screenShotsModalOpen}
           onClose={handleScreenShotsModalClose}
+          onClick={handleModalClick}
         >
           <StyledModal.Header>Capturas de tela do Projeto</StyledModal.Header>
           <StyledModal.Content scrolling>

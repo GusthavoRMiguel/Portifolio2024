@@ -65,7 +65,9 @@ export const Links = styled.div<SideBarProps>`
     border: none;
     display: flex;
     gap: 10px;
-    width: 100%;
+    width: ${({ open }) => (open ? '90%' : '100%')};
+    align-self: center;
+    border-radius: 10px;
     justify-content: center;
     color: ${(props) => props.theme.colors.white};
     font-weight: 600;

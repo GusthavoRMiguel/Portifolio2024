@@ -10,19 +10,20 @@ export default {
       secondary: '#d9e4f1'
     },
     linear: {
-      primary: `linear-gradient(90deg,
-      #ccc 0%,
-      #fff 15%,
-      #fff 50%,
-      #fff 85%,
-      #ccc 100%)`,
+      primary: `linear-gradient(90deg, 
+        #657d7c82 0%, 
+        #9fceca 15%,
+        #5e9894 50%,
+        #9fceca 85%, 
+        #657d7c82 100%)`,
 
-      hover: `linear-gradient( 90deg,
-      #fff 0%,
-      #ccc 15%,
-      #ccc 50%,
-      #ccc 85%,
-      #fff 100%)`
+      hover: `linear-gradient(90deg,
+         #256c69 0%,
+          #3b6763 15%, 
+          #4b9792 50%, 
+          #3b6763 85%, 
+          #256c69 100%);
+      `
     }
   },
   font: {

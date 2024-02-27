@@ -32,7 +32,7 @@ export const SidebarContainer = styled.div<SideBarProps>`
 export const ToggleButton = styled.button<SideBarProps>`
   background-color: transparent;
   border: none;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.white};
   cursor: pointer;
   width: fit-content;
   height: fit-content;
@@ -67,7 +67,7 @@ export const Links = styled.div<SideBarProps>`
     gap: 10px;
     width: 100%;
     justify-content: center;
-    color: ${(props) => props.theme.colors.text};
+    color: ${(props) => props.theme.colors.white};
     font-weight: 600;
     text-decoration: none;
     font-size: 0.95rem;

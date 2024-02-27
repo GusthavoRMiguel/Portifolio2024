@@ -64,47 +64,158 @@ const ProjectsPage: React.FC = () => {
         pc: [
           {
             title: 'Tela Inicial',
-            image: '/img/projects/SmartFactory/TelaInicialPC.png'
+            image: '/img/projects/SmartFactory/pc/TelaInicial.png'
           },
           {
-            title: 'Tela Gestão Simplificada',
-            image: '/img/projects/SmartFactory/TelaGestaoSimplificadaPC.png'
+            title: 'Tela Gestão à Vista: Visão Simplificada',
+            image: '/img/projects/SmartFactory/pc/TelaGestaoSimplificada.png'
           },
           {
-            title: 'Tela Gestão Completa',
-            image: '/img/projects/SmartFactory/TelaGestaoCompletaPC.png'
+            title: 'Tela Gestão à Vista: Visão Completa',
+            image: '/img/projects/SmartFactory/pc/TelaGestaoCompleta.png'
+          },
+          {
+            title: 'Tela Ordens de Produção',
+            image: '/img/projects/SmartFactory/pc/telaOP.png'
+          },
+          {
+            title: 'Tela Ordens de Produção ( parte 2 )',
+            image: '/img/projects/SmartFactory/pc/telaOP1.png'
           }
         ],
         tablet: [
           {
             title: 'Tela Inicial',
-            image: '/img/projects/SmartFactory/TelaInicialTab.png'
+            image: '/img/projects/SmartFactory/tablet/TelaInicialTab.png'
           },
           {
             title: 'Tela Gestão Simplificada',
-            image: '/img/projects/SmartFactory/TelaGestaoSimplificadaTab.png'
+            image:
+              '/img/projects/SmartFactory/tablet/TelaGestaoSimplificadaTab.png'
           },
           {
             title: 'Tela Gestão Completa',
-            image: '/img/projects/SmartFactory/TelaGestaoCompletaTab.png'
+            image: '/img/projects/SmartFactory/tablet/TelaGestaoCompletaTab.png'
+          },
+          {
+            title: 'Tela Produtividade',
+            image: '/img/projects/SmartFactory/tablet/tabProdutividade.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/tablet/IHMS.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/tablet/IHMS1.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/tablet/IHMS2.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/tablet/IHMS3.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/tablet/IHMS4.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/tablet/IHMS5.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/tablet/IHMS6.png'
+          },
+          {
+            title: 'Plano de ação',
+            image: '/img/projects/SmartFactory/tablet/actionPlan.png'
+          },
+          {
+            title: 'Nova ordem de produção',
+            image: '/img/projects/SmartFactory/tablet/newOrder.png'
+          },
+          {
+            title: 'Tela Qualidade',
+            image: '/img/projects/SmartFactory/tablet/Qualidade.png'
+          },
+          {
+            title: 'Tela Qualidade (parte 2)',
+            image: '/img/projects/SmartFactory/tablet/Qualidade2.png'
+          },
+          {
+            title: 'Tela Gestão de Mão de Obra',
+            image: '/img/projects/SmartFactory/tablet/TabGestaoMaoDeObra.png'
+          },
+          {
+            title: 'Tela Gestão de Produção',
+            image: '/img/projects/SmartFactory/tablet/TabGestaoProd.png'
+          },
+          {
+            title: 'Tela Gestão de Produção (parte 2)',
+            image: '/img/projects/SmartFactory/tablet/TabGestaoProd2.png'
+          },
+          {
+            title: 'Tela Gestão de Produção(parte 3)',
+            image: '/img/projects/SmartFactory/tablet/TabGestaoProd3.png'
+          },
+          {
+            title: 'Tela Gestão de Produção(parte 4)',
+            image: '/img/projects/SmartFactory/tablet/TabGestaoProd4.png'
           }
         ],
         smartphone: [
           {
             title: 'Tela Inicial',
-            image: '/img/projects/SmartFactory/TelaInicialMob1.png'
+            image: '/img/projects/SmartFactory/smartphone/TelaInicialMob.png'
           },
           {
             title: 'Tela Inicial ( parte 2 )',
-            image: '/img/projects/SmartFactory/TelaInicialMob2.png'
+            image: '/img/projects/SmartFactory/smartphone/TelaInicialMob2.png'
           },
           {
             title: 'Tela Gestão Simplificada',
-            image: '/img/projects/SmartFactory/TelaGestaoSimplificadaMob.png'
+            image:
+              '/img/projects/SmartFactory/smartphone/TelaGestaoSimplificada.png'
           },
           {
             title: 'Tela Gestão Completa',
-            image: '/img/projects/SmartFactory/TelaGestaoCompletaMob.png'
+            image:
+              '/img/projects/SmartFactory/smartphone/TelaGestaoCompleta.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/smartphone/IHMS1.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/smartphone/IHMS2.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/smartphone/IHMS3.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/smartphone/IHMS4.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/smartphone/IHMS5.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/smartphone/IHMSup.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/smartphone/IHMSup1.png'
+          },
+          {
+            title: 'Tela IHMS',
+            image: '/img/projects/SmartFactory/smartphone/IHMSupColeta.png'
           }
         ]
       }

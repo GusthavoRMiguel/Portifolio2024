@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button, ModalProps } from 'semantic-ui-react';
@@ -8,21 +9,30 @@ import {
   Container,
   Content,
   FlippedContent,
-  ImageModal,
   Status,
   StyledModal
 } from './styles';
+import Carrossel from '../carrossel';
 
 interface ScreenShot {
-  imgTitle: string;
-  imgSrc: string;
+  pc?: {
+    title: string;
+    image: string;
+  }[];
+  tablet?: {
+    title: string;
+    image: string;
+  }[];
+  smartphone?: {
+    title: string;
+    image: string;
+  }[];
 }
-
 interface CardProps {
   link?: string;
   linkGithub?: string;
   info?: string;
-  screenShots?: ScreenShot[];
+  screenShots?: ScreenShot;
   img: string;
   status: 'Em Desenvolvimento' | 'Online' | 'Pausado';
   icon: string;
@@ -102,7 +112,7 @@ const Card: React.FC<CardProps> = ({
                 Ver repositório no Github
               </a>
             ) : (
-              <p>Repositório Privado</p>
+              <p>Repositório Privado ou Indisponível</p>
             )}
             {info ? (
               <button onClick={handleInfoModalOpen}>
@@ -169,18 +179,23 @@ const Card: React.FC<CardProps> = ({
           onClose={handleScreenShotsModalClose}
         >
           <StyledModal.Header>Capturas de tela do Projeto</StyledModal.Header>
-          <StyledModal.Content scrolling className="gridImage">
-            {screenShots?.map((shot, index) => (
-              <ImageModal key={index}>
-                <h3>{shot.imgTitle}</h3>
-                <Image
-                  alt={shot.imgTitle}
-                  src={shot.imgSrc}
-                  width={400}
-                  height={300}
-                />
-              </ImageModal>
-            ))}
+          <StyledModal.Content scrolling>
+            {screenShots && (
+              <>
+                {screenShots.pc && (
+                  <Carrossel contentTitle="PC" album={screenShots.pc} />
+                )}
+                {screenShots.tablet && (
+                  <Carrossel contentTitle="Tablet" album={screenShots.tablet} />
+                )}
+                {screenShots.smartphone && (
+                  <Carrossel
+                    contentTitle="Smartphone"
+                    album={screenShots.smartphone}
+                  />
+                )}
+              </>
+            )}
           </StyledModal.Content>
 
           <StyledModal.Actions>

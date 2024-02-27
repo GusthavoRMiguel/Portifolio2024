@@ -60,37 +60,46 @@ export const FlippedContent = styled.div<FlipProps>`
 
   p {
     cursor: not-allowed;
-    border: solid 1px;
+    height: 4rem;
     border-radius: 10px;
     padding: 1rem;
     text-align: center;
     justify-content: center;
     font-weight: 600;
     font-size: 1rem;
-    background-color: ${(props) => props.theme.colors.primary};
-    color: #edf2f7;
-  }
-
-  > a,
-  button {
-    cursor: pointer;
-    border: solid 1px;
-    border-radius: 10px;
-    padding: 1rem;
-    text-align: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 1rem;
-    background-color: ${(props) => props.theme.colors.primary};
+    background-color: ${(props) => props.theme.colors.tertiary};
     color: ${(props) => props.theme.colors.text};
-  }
+    display: flex;
+    align-items: center;
 
-  > a,
-  p,
-  button {
     &:hover {
       background-color: ${(props) => props.theme.colors.secondary};
       color: ${(props) => props.theme.colors.text_hover};
+    }
+  }
+
+  > a,
+  button {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.text_secondary};
+  }
+
+  > a,
+  button {
+    &:hover {
+      background-color: ${(props) => props.theme.colors.secondary};
+      color: ${(props) => props.theme.colors.text_secondary_hover};
     }
   }
 `;
@@ -157,21 +166,13 @@ export const BoxText = styled.div`
 `;
 
 export const StyledModal = styled(Modal)`
-  .ui.modal.scrolling.content {
+  .scrolling.content {
     padding: 1rem;
+    max-height: calc(94vh - 10em) !important;
   }
 
   .ui.modal > .content {
     padding: 1rem !important;
-  }
-  .gridImage {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem;
-
-    @media (max-width: 640px) {
-      grid-template-columns: repeat(1, 1fr) !important;
-    }
   }
 `;
 

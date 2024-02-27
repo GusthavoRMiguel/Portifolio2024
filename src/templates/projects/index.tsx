@@ -17,8 +17,18 @@ import Head from 'next/head';
 import CustomSwitch from '@/components/switchTheme';
 
 interface ScreenShot {
-  imgTitle: string;
-  imgSrc: string;
+  pc?: {
+    title: string;
+    image: string;
+  }[];
+  tablet?: {
+    title: string;
+    image: string;
+  }[];
+  smartphone?: {
+    title: string;
+    image: string;
+  }[];
 }
 
 interface CardProps {
@@ -30,7 +40,7 @@ interface CardProps {
   link: string;
   linkGithub: string;
   info: string;
-  screenShots?: ScreenShot[];
+  screenShots?: ScreenShot;
 }
 
 const ProjectsPage: React.FC = () => {
@@ -50,50 +60,54 @@ const ProjectsPage: React.FC = () => {
       link: 'https://smartfactory.com.br/',
       linkGithub: '',
       info: 'Projeto criado em react',
-      screenShots: [
-        {
-          imgTitle: 'Tela Inicial ( PC )',
-          imgSrc: '/img/projects/SmartFactory/TelaInicialPC.png'
-        },
-        {
-          imgTitle: 'Tela Inicial ( Tablet )',
-          imgSrc: '/img/projects/SmartFactory/TelaInicialTab.png'
-        },
-        {
-          imgTitle: 'Tela Inicial ( Smartphone )',
-          imgSrc: '/img/projects/SmartFactory/TelaInicialMob1.png'
-        },
-        {
-          imgTitle: 'Tela Inicial parte 2 ( Smartphone )',
-          imgSrc: '/img/projects/SmartFactory/TelaInicialMob2.png'
-        },
-
-        {
-          imgTitle: 'Tela Gestão Simplificada ( PC )',
-          imgSrc: '/img/projects/SmartFactory/TelaGestaoSimplificadaPC.png'
-        },
-        {
-          imgTitle: 'Tela Gestão Simplificada ( Smartphone )',
-          imgSrc: '/img/projects/SmartFactory/TelaGestaoSimplificadaMob.png'
-        },
-        {
-          imgTitle: 'Tela Gestão Simplificada ( Tablet )',
-          imgSrc: '/img/projects/SmartFactory/TelaGestaoSimplificadaTab.png'
-        },
-
-        {
-          imgTitle: 'Tela Gestão Completa ( PC )',
-          imgSrc: '/img/projects/SmartFactory/TelaGestaoCompletaPC.png'
-        },
-        {
-          imgTitle: 'Tela Gestão Completa ( Tablet )',
-          imgSrc: '/img/projects/SmartFactory/TelaGestaoCompletaTab.png'
-        },
-        {
-          imgTitle: 'Tela Gestão Completa ( Smartphone )',
-          imgSrc: '/img/projects/SmartFactory/TelaGestaoCompletaMob.png'
-        }
-      ]
+      screenShots: {
+        pc: [
+          {
+            title: 'Tela Inicial',
+            image: '/img/projects/SmartFactory/TelaInicialPC.png'
+          },
+          {
+            title: 'Tela Gestão Simplificada',
+            image: '/img/projects/SmartFactory/TelaGestaoSimplificadaPC.png'
+          },
+          {
+            title: 'Tela Gestão Completa',
+            image: '/img/projects/SmartFactory/TelaGestaoCompletaPC.png'
+          }
+        ],
+        tablet: [
+          {
+            title: 'Tela Inicial',
+            image: '/img/projects/SmartFactory/TelaInicialTab.png'
+          },
+          {
+            title: 'Tela Gestão Simplificada',
+            image: '/img/projects/SmartFactory/TelaGestaoSimplificadaTab.png'
+          },
+          {
+            title: 'Tela Gestão Completa',
+            image: '/img/projects/SmartFactory/TelaGestaoCompletaTab.png'
+          }
+        ],
+        smartphone: [
+          {
+            title: 'Tela Inicial',
+            image: '/img/projects/SmartFactory/TelaInicialMob1.png'
+          },
+          {
+            title: 'Tela Inicial ( parte 2 )',
+            image: '/img/projects/SmartFactory/TelaInicialMob2.png'
+          },
+          {
+            title: 'Tela Gestão Simplificada',
+            image: '/img/projects/SmartFactory/TelaGestaoSimplificadaMob.png'
+          },
+          {
+            title: 'Tela Gestão Completa',
+            image: '/img/projects/SmartFactory/TelaGestaoCompletaMob.png'
+          }
+        ]
+      }
     },
     {
       status: 'Em Desenvolvimento',

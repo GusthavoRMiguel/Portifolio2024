@@ -91,14 +91,12 @@ const ContactPage: React.FC = () => {
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />
         <Content className={isSidebarOpen ? 'open-sidebar' : ''}>
+          {' '}
           <Heading>
-            {' '}
+            <PageName page="Contato" />
             <CustomSwitch />
           </Heading>
-
           <BoxMain>
-            <PageName page="Contato" />
-
             <BoxForm>
               <div className="grid">
                 <BoxContact>

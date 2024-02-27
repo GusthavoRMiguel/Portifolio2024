@@ -15,6 +15,8 @@ export const Heading = styled.div`
   padding-top: 1.5rem;
   padding-inline: 2rem;
   margin-bottom: 3rem;
+  width: 100%;
+  justify-content: space-between;
 
   @media (max-width: 640px) {
     padding-top: 1rem;
@@ -33,12 +35,23 @@ export const Content = styled.div`
     left: 20vw;
     width: 80vw;
   }
+
+  @media (max-width: 640px) {
+    width: 90vw;
+    left: 10vw;
+
+    &.open-sidebar {
+      width: 90vw;
+      left: 10vw;
+    }
+  }
 `;
 
 export const BoxMain = styled.main`
   padding-inline: 2rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  margin-top: 16vh;
 `;
 
 export const BoxForm = styled.div`
@@ -157,7 +170,7 @@ export const FormContainer = styled.div`
     textarea {
       width: 100%;
       padding: 0.5rem;
-      border-radius: 0.25rem;
+      border-radius: 10px;
       border: 1px solid #ced4da;
     }
 

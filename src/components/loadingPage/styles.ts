@@ -7,9 +7,13 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #161519;
+  overflow-y: hidden;
 
   img {
     width: max-content;
-    height: 100%;
+    height: max-content;
+    @media (max-width: 640px) {
+      width: 100%;
+    }
   }
 `;

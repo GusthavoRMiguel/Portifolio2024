@@ -93,13 +93,19 @@ export const Links = styled.div<SideBarProps>`
     }
   }
 
-  > button:hover,
-  a:hover {
+  button:hover,
+  a:hover,
+  .active {
     background: ${({ open }) =>
       open ? (props) => props.theme.background.linear.hover : 'transparent'};
 
     font-weight: bolder;
     border: 20px 20px;
     color: ${(props) => props.theme.colors.text_hover};
+
+    svg,
+    p {
+      opacity: 0.5;
+    }
   }
 `;

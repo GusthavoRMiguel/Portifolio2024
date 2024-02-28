@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { SidebarContainer, ToggleButton, Links } from './styles';
 import {
@@ -18,6 +19,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen }) => {
+  const router = useRouter();
   const toggleSidebar = () => {
     onOpen();
   };
@@ -29,46 +31,60 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen }) => {
           {isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
         </ToggleButton>
         <Links open={isOpen}>
-          <Link href={'/'}>
+          <Link href={'/'} className={router.pathname === '/' ? 'active' : ''}>
             {isOpen ? (
               <>
-                <AiOutlineHome /> Home
+                <AiOutlineHome />
+                <p> Home</p>
               </>
             ) : (
               <AiOutlineHome />
             )}
           </Link>
-          <Link href={'/about'}>
+          <Link
+            href={'/about'}
+            className={router.pathname === '/about' ? 'active' : ''}
+          >
             {isOpen ? (
               <>
-                <AiOutlineUser /> Sobre mim
+                <AiOutlineUser /> <p>Sobre mim</p>
               </>
             ) : (
               <AiOutlineUser />
             )}
           </Link>
-          <Link href={'projects'}>
+          <Link
+            href={'projects'}
+            className={router.pathname === '/projects' ? 'active' : ''}
+          >
             {isOpen ? (
               <>
-                <AiOutlineCode /> Projetos
+                <AiOutlineCode />
+                <p> Projetos</p>
               </>
             ) : (
               <AiOutlineCode />
             )}
           </Link>
-          <Link href={'certificates'}>
+          <Link
+            href={'certificates'}
+            className={router.pathname === '/certificates' ? 'active' : ''}
+          >
             {isOpen ? (
               <>
-                <AiOutlineTrophy /> Certificados
+                <AiOutlineTrophy /> <p>Certificados</p>
               </>
             ) : (
               <AiOutlineTrophy />
             )}
           </Link>
-          <Link href={'contact'}>
+          <Link
+            href={'contact'}
+            className={router.pathname === '/contact' ? 'active' : ''}
+          >
             {isOpen ? (
               <>
-                <AiOutlineComment /> Contato
+                <AiOutlineComment /> <p>Contato</p>
               </>
             ) : (
               <AiOutlineComment />
@@ -76,7 +92,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen }) => {
           </Link>
         </Links>
       </SidebarContainer>
-      s
     </>
   );
 };

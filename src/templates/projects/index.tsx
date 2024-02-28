@@ -30,6 +30,12 @@ interface ScreenShot {
     image: string;
   }[];
 }
+interface Info {
+  title: string;
+  content: {
+    text: string;
+  }[];
+}
 
 interface CardProps {
   status: 'Em Desenvolvimento' | 'Online' | 'Pausado';
@@ -39,7 +45,7 @@ interface CardProps {
   description: string;
   link: string;
   linkGithub: string;
-  info: string;
+  info?: Info[];
   screenShots?: ScreenShot;
 }
 
@@ -59,7 +65,91 @@ const ProjectsPage: React.FC = () => {
       description: 'Interface de gerenciamento industrial.',
       link: 'https://smartfactory.com.br/',
       linkGithub: '',
-      info: 'Projeto criado em react',
+
+      info: [
+        {
+          title: 'O que é a Smart Factory:',
+          content: [
+            {
+              text: 'A Smart Factory, é um conceito que se refere à aplicação de tecnologias avançadas, como Internet das Coisas (IoT), Inteligência Artificial (IA) e automação, para transformar as operações de fabricação tradicionais em ambientes altamente eficientes, adaptáveis e conectados digitalmente.'
+            },
+            {
+              text: 'A Smart Factory integra sistemas de produção e de informação em uma única rede inteligente, permitindo o monitoramento em tempo real, análise de dados em larga escala e tomada de decisões baseadas em dados para otimizar a produção, aumentar a qualidade, reduzir custos e melhorar a flexibilidade.'
+            }
+          ]
+        },
+        {
+          title: 'Desafios da Criação do Front-end:',
+          content: [
+            {
+              text: 'Integração de Dados: Um dos principais desafios é garantir a integração perfeita de dados provenientes de diferentes fontes, como sensores, máquinas e sistemas de gerenciamento, para fornecer uma visão abrangente e precisa do ambiente de produção.'
+            },
+            {
+              text: 'Interface Intuitiva: Desenvolver uma interface de usuário (UI) intuitiva e amigável é crucial para garantir que os operadores possam interagir facilmente com os sistemas da Smart Factory e acessar as informações necessárias para tomar decisões informadas.'
+            },
+            {
+              text: 'Gerenciamento de Dispositivos: A gestão eficiente de dispositivos, incluindo dispositivos IoT, máquinas e terminais de usuário, apresenta desafios em termos de conectividade, segurança e interoperabilidade.'
+            },
+            {
+              text: 'Escalabilidade: O front-end foi projetado para ser escalável, permitindo a expansão fácil e acomodação de novas funcionalidades à medida que a Smart Factory cresce e evolui.'
+            }
+          ]
+        },
+        {
+          title: 'Tecnologias Usadas:',
+          content: [
+            {
+              text: 'Axios (0.21.4): Uma biblioteca para fazer requisições HTTP de forma fácil e flexível.'
+            },
+            {
+              text: 'Date-fns (2.16.1): Uma biblioteca JavaScript para manipulação de datas, oferecendo funções para formatação, manipulação e cálculos de datas.'
+            },
+            {
+              text: 'Polished (4.1.3): Uma biblioteca de utilitários de estilo para estilização CSS em JavaScript, fornecendo funções para facilitar a manipulação de cores, sombras, gradientes, entre outros.'
+            },
+            {
+              text: 'React (16.14.0) e React-DOM (16.14.0): Framework JavaScript para construir interfaces de usuário reativas e dinâmicas.'
+            },
+            {
+              text: 'React-detect-offline (2.4.5): Uma biblioteca para detectar a conectividade de rede offline em aplicativos React, permitindo uma melhor manipulação de situações em que o aplicativo está sem conexão com a internet.'
+            },
+            {
+              text: 'React-error-boundary (4.0.11): Um componente de limite de erro para React que captura erros em componentes filhos durante a renderização, permitindo um tratamento de erro mais eficiente e uma melhor experiência do usuário.'
+            },
+            {
+              text: 'React-icons (4.2.0): Uma biblioteca de ícones para React que oferece uma grande variedade de ícones prontos para uso.'
+            },
+            {
+              text: 'React-input-mask (3.0.0): Um componente React para criar máscaras de entrada que formatam automaticamente os valores inseridos de acordo com um padrão especificado, útil para entrada de dados como números de telefone, CPFs, entre outros.'
+            },
+            {
+              text: 'React-query (3.23.2): Uma biblioteca para fazer requisições de dados de forma eficiente e gerenciar o estado da aplicação.'
+            },
+            {
+              text: 'React-slider (2.0.4): Um componente deslizante (slider) para React que permite aos usuários selecionar um valor em um intervalo especificado, com suporte para personalização de estilo e comportamento.'
+            },
+            {
+              text: 'React-spring (8.0.27): Uma biblioteca de animação para React que facilita a criação de animações fluidas e naturais.'
+            },
+            {
+              text: 'Recharts (2.2.0): Uma biblioteca de gráficos para React que oferece uma variedade de tipos de gráficos para visualização de dados.'
+            },
+            {
+              text: 'Semantic-ui-react (3.0.0) : Uma biblioteca de componentes de interface do usuário pré-projetados e estilizados, facilitando o desenvolvimento de interfaces consistentes e atraentes.'
+            },
+            {
+              text: 'Styled-components (5.3.1): Biblioteca para estilização de componentes React usando estilos CSS-in-JS, oferecendo escopo de estilo e reutilização de código.'
+            },
+            {
+              text: 'UUID (8.3.2): Uma biblioteca para geração de identificadores únicos universalmente (UUIDs).'
+            },
+            {
+              text: 'Yup (0.32.8): Uma biblioteca de validação de esquemas para JavaScript, útil para validar dados de entrada em formulários.'
+            }
+          ]
+        }
+      ],
+
       screenShots: {
         pc: [
           {
@@ -227,8 +317,7 @@ const ProjectsPage: React.FC = () => {
       title: 'You Garage',
       description: 'Site para compra e venda de veículos',
       link: '',
-      linkGithub: '',
-      info: 'Projeto criado em react'
+      linkGithub: ''
     },
     {
       status: 'Online',
@@ -238,8 +327,7 @@ const ProjectsPage: React.FC = () => {
       description:
         'Página de portifólio desenvolvida em next com typescript e styled-components',
       link: 'https://gustha-devold.vercel.app',
-      linkGithub: '',
-      info: 'Projeto criado em react'
+      linkGithub: 'https://github.com/GusthavoRMiguel/Portifolio2024'
     },
     {
       status: 'Online',
@@ -248,8 +336,7 @@ const ProjectsPage: React.FC = () => {
       title: 'KSG Vidros para Vans',
       description: 'Site expositório em NextJs com tailwind-css',
       link: 'https://ksg-vidros.vercel.app/',
-      linkGithub: '',
-      info: 'Projeto criado em react'
+      linkGithub: ''
     },
     {
       status: 'Online',
@@ -258,8 +345,7 @@ const ProjectsPage: React.FC = () => {
       title: 'Clone Netflix',
       description: 'Clone NetFlix em javascript com bootstrap  e carrousel.',
       link: 'https://mult-flix.vercel.app/',
-      linkGithub: '',
-      info: 'Projeto criado em react'
+      linkGithub: 'https://github.com/GusthavoRMiguel/CloneNetflix'
     },
     {
       status: 'Em Desenvolvimento',
@@ -269,8 +355,7 @@ const ProjectsPage: React.FC = () => {
       description:
         'Gestor de finanças desenvolvido em react e banco de dados firebase.',
       link: 'https://money-script.vercel.app/',
-      linkGithub: '',
-      info: 'Projeto criado em react'
+      linkGithub: 'https://github.com/GusthavoRMiguel/MoneyScript'
     }
   ];
 

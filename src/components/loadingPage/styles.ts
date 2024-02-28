@@ -6,9 +6,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #161519;
 
   img {
-    width: 100%;
+    width: max-content;
     height: 100%;
   }
 `;

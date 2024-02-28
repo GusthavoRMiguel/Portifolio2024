@@ -1,5 +1,6 @@
-import { Modal } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { Modal } from 'semantic-ui-react';
+import { lighten } from 'polished';
 
 interface StatusProps {
   color: string;
@@ -67,13 +68,14 @@ export const FlippedContent = styled.div<FlipProps>`
     justify-content: center;
     font-weight: 600;
     font-size: 1rem;
-    background-color: ${(props) => props.theme.colors.tertiary};
+    background-color: ${(props) => lighten(0.12, props.theme.colors.primary)};
     color: ${(props) => props.theme.colors.text};
     display: flex;
     align-items: center;
 
     &:hover {
-      background-color: ${(props) => props.theme.colors.secondary};
+      background-color: ${(props) =>
+        lighten(0.12, props.theme.colors.secondary)};
       color: ${(props) => props.theme.colors.text_hover};
     }
   }
@@ -118,13 +120,13 @@ export const Status = styled.div<StatusProps>`
   position: absolute;
   right: 0;
   margin-top: 1rem;
-  border-top-left-radius: 35%;
-  border-bottom-left-radius: 35%;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
   text-align: center;
   font-weight: bold;
   font-size: 0.75rem;
   color: #ffffff;
-  padding: 0.25rem 0.5rem;
+  padding: 2px 5px 2px 10px;
   background-color: ${({ color }) => color};
 `;
 
@@ -194,4 +196,11 @@ export const ImageModal = styled.div`
       height: 200px;
     }
   }
+`;
+
+export const AccordionList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  gap: 10px;
 `;

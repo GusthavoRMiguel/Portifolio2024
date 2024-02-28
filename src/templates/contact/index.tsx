@@ -41,7 +41,25 @@ const ContactSchema = yup.object().shape({
     .label('Endereço de Email')
     .required('Por favor, preencha aqui!')
     .email('Endereço de email inválido.'),
-  phone: yup.string().label('Telefone de Contato').max(12),
+  phone: yup
+    .string()
+    .label('Telefone de Contato')
+    .notRequired()
+    .test('is-valid-phone', 'Digite apenas números.', (value) => {
+      if (!value) return true;
+      const phoneRegex = /^\d+$/;
+      const isValidLength = value.length === 12;
+
+      if (!phoneRegex.test(value)) {
+        throw new yup.ValidationError('Digite apenas números.', value, 'phone');
+      }
+      if (!isValidLength) {
+        const missingNumbers = Math.max(12 - value.length, 0);
+        let errorMessage = `Faltam ${missingNumbers} número(s), incluindo o DDD. `;
+        throw new yup.ValidationError(errorMessage, value, 'phone');
+      }
+      return true;
+    }),
   message: yup
     .string()
     .label('Mensagem')
@@ -51,7 +69,6 @@ const ContactSchema = yup.object().shape({
 });
 
 const ContactPage: React.FC = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -66,11 +83,8 @@ const ContactPage: React.FC = () => {
     phone: string;
     message: string;
   }) => {
-    setIsSubmitting(true);
-
     try {
       const res = await axios.post('/api/contact-form', values);
-      setIsSubmitting(false);
 
       if (res.data.status === 1) {
         setIsSubmitted(true);
@@ -147,35 +161,88 @@ const ContactPage: React.FC = () => {
                       validationSchema={ContactSchema}
                       onSubmit={(values) => submitForm(values)}
                     >
-                      <form>
-                        <div>
-                          <label htmlFor="name">Nome Completo</label>
-                          <Field type="text" id="name" name="name" />
-                          <ErrorMessage name="name" component="div" />
-                        </div>
+                      {({ isSubmitting, errors, touched, isValid }) => (
+                        <form>
+                          <div className="container-input">
+                            <label htmlFor="name">Nome Completo</label>
+                            <Field
+                              type="text"
+                              id="name"
+                              name="name"
+                              className={
+                                touched.name && errors.name ? 'erro' : ''
+                              }
+                            />
+                            <ErrorMessage
+                              className="error-message"
+                              name="name"
+                              component="span"
+                            />
+                          </div>
 
-                        <div>
-                          <label htmlFor="email">Endereço de Email</label>
-                          <Field type="email" id="email" name="email" />
-                          <ErrorMessage name="email" component="div" />
-                        </div>
+                          <div className="container-input">
+                            <label htmlFor="email">Endereço de Email</label>
+                            <Field
+                              type="email"
+                              id="email"
+                              name="email"
+                              className={
+                                touched.email && errors.email ? 'erro' : ''
+                              }
+                            />
+                            <ErrorMessage
+                              className="error-message"
+                              name="email"
+                              component="span"
+                            />
+                          </div>
 
-                        <div>
-                          <label htmlFor="phone">Telefone de Contato</label>
-                          <Field type="tel" id="phone" name="phone" />
-                          <ErrorMessage name="phone" component="div" />
-                        </div>
+                          <div className="container-input">
+                            <label htmlFor="phone">Telefone de Contato</label>
+                            <Field
+                              type="tel"
+                              id="phone"
+                              name="phone"
+                              className={
+                                touched.phone && errors.phone ? 'erro' : ''
+                              }
+                            />
+                            <ErrorMessage
+                              className="error-message"
+                              name="phone"
+                              component="span"
+                            />
+                          </div>
 
-                        <div>
-                          <label htmlFor="message">Mensagem</label>
-                          <Field as="textarea" id="message" name="message" />
-                          <ErrorMessage name="message" component="div" />
-                        </div>
+                          <div className="container-message">
+                            <label htmlFor="message">Mensagem</label>
+                            <Field
+                              as="textarea"
+                              id="message"
+                              name="message"
+                              className={
+                                touched.message && errors.message ? 'erro' : ''
+                              }
+                            />
+                            <ErrorMessage
+                              className="error-message"
+                              name="message"
+                              component="span"
+                            />
+                          </div>
 
-                        <button type="submit" disabled={isSubmitting}>
-                          {isSubmitting ? 'Enviando...' : 'Enviar'}
-                        </button>
-                      </form>
+                          <button
+                            type="submit"
+                            disabled={isSubmitting || !isValid}
+                          >
+                            {isSubmitting
+                              ? 'Enviando...'
+                              : isValid
+                              ? 'Enviar'
+                              : 'Corrija os campos com erro!'}
+                          </button>
+                        </form>
+                      )}
                     </Formik>
                   ) : (
                     <ThankYouContainer>

@@ -3,7 +3,7 @@ import { Container } from './styles';
 const LoadingPage = () => {
   return (
     <Container>
-      <img src="/loadingGif.gif" alt="Carregando..." />
+      <img src="/hand.gif" alt="Carregando..." />
     </Container>
   );
 };

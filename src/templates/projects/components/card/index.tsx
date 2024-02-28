@@ -1,8 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Button, ModalProps } from 'semantic-ui-react';
+import { Button, ModalProps, Accordion, Icon } from 'semantic-ui-react';
 import {
+  AccordionList,
   BoxIcon,
   BoxImage,
   BoxText,
@@ -28,10 +29,18 @@ interface ScreenShot {
     image: string;
   }[];
 }
+
+interface Info {
+  title: string;
+  content: {
+    text: string;
+  }[];
+}
+
 interface CardProps {
   link?: string;
   linkGithub?: string;
-  info?: string;
+  info?: Info[];
   screenShots?: ScreenShot;
   img: string;
   status: 'Em Desenvolvimento' | 'Online' | 'Pausado';
@@ -54,6 +63,7 @@ const Card: React.FC<CardProps> = ({
   const [isFlipped, setIsFlipped] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [screenShotsModalOpen, setScreenShotsModalOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleCardClick = () => {
     setIsFlipped(!isFlipped);
@@ -61,6 +71,11 @@ const Card: React.FC<CardProps> = ({
   const handleInfoModalOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setInfoModalOpen(!infoModalOpen);
+    setActiveIndex(null);
+  };
+
+  const handleAccordionClick = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   const handleScreenShotsModalOpen = (
@@ -161,9 +176,36 @@ const Card: React.FC<CardProps> = ({
       )}
 
       {infoModalOpen && (
-        <StyledModal open={infoModalOpen} onClose={handleInfoModalClose}>
+        <StyledModal
+          open={infoModalOpen}
+          onClose={handleInfoModalClose}
+          onClick={handleModalClick}
+        >
           <StyledModal.Header>Informações do Projeto</StyledModal.Header>
-          <StyledModal.Content> {info}</StyledModal.Content>
+          <StyledModal.Content scrolling>
+            <Accordion styled fluid>
+              {info &&
+                info.map((item, index) => (
+                  <React.Fragment key={index}>
+                    <Accordion.Title
+                      active={activeIndex === index}
+                      index={index}
+                      onClick={() => handleAccordionClick(index)}
+                    >
+                      <Icon name="dropdown" />
+                      {item.title}
+                    </Accordion.Title>
+                    <Accordion.Content active={activeIndex === index}>
+                      <AccordionList>
+                        {item.content.map((textItem, textIndex) => (
+                          <li key={textIndex}>{textItem.text}</li>
+                        ))}
+                      </AccordionList>
+                    </Accordion.Content>
+                  </React.Fragment>
+                ))}
+            </Accordion>
+          </StyledModal.Content>
 
           <StyledModal.Actions>
             <Button

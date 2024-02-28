@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
 
 export const Container = styled.div`
   display: flex;
@@ -62,6 +63,9 @@ export const BoxForm = styled.div`
 
   .grid {
     display: grid;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    width: 80vw;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -70,12 +74,11 @@ export const BoxForm = styled.div`
 `;
 
 export const BoxContact = styled.div`
-  background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
+  width: 40vw;
   padding: 2rem 4rem;
-  margin-right: 0.5rem;
+  border-radius: 10px;
 
   h1 {
     align-self: center;
@@ -151,14 +154,26 @@ export const BoxImage = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  padding: 2rem;
-  background-color: transparent;
-  border-radius: 0.5rem;
-  margin-left: 2rem;
+  padding: 2rem 4rem;
+  width: 40vw;
+  border-radius: 10px;
+  background-color: ${(props) => lighten(0.8, props.theme.colors.white)};
 
   form {
     display: grid;
     grid-gap: 1rem;
+
+    .container-input {
+      height: 6rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container-message {
+      height: 10rem;
+      display: flex;
+      flex-direction: column;
+    }
 
     label {
       font-size: 1rem;
@@ -172,6 +187,10 @@ export const FormContainer = styled.div`
       padding: 0.5rem;
       border-radius: 10px;
       border: 1px solid #ced4da;
+
+      &.erro {
+        border: 1px solid red;
+      }
     }
 
     button {
@@ -190,6 +209,13 @@ export const FormContainer = styled.div`
         background-color: #b1c7e2;
         cursor: not-allowed;
       }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 1rem;
+      margin-left: auto;
+      margin-right: 1rem;
     }
   }
 `;

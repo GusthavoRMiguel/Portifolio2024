@@ -128,6 +128,7 @@ export const BoxContact = styled.div`
   }
 
   @media (max-width: 768px) {
+    width: 80vw;
     p {
       display: none;
     }
@@ -217,6 +218,10 @@ export const FormContainer = styled.div`
       margin-left: auto;
       margin-right: 1rem;
     }
+  }
+
+  @media (max-width: 768px) {
+    width: fit-content;
   }
 `;
 

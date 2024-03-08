@@ -311,6 +311,77 @@ const ProjectsPage: React.FC = () => {
       }
     },
     {
+      status: 'Online',
+      img: '/img/projects/WP/capa.png',
+      icon: '/codeIcon/icons8-react.svg',
+      title: 'Worldpedia',
+      description: 'Página informativa sobre países.',
+      link: 'https://worldpedia-cw6qya3v1-gusthavormiguel.vercel.app/',
+      linkGithub: 'https://github.com/GusthavoRMiguel/Worldpedia',
+
+      info: [
+        {
+          title: 'O que é a Worldpedia:',
+          content: [
+            {
+              text: `
+              O Worldpedia é um projeto empolgante criado em React, com o propósito de proporcionar uma experiência interativa e esclarecedora sobre os países ao redor do globo. Utilizando tecnologias modernas e recursos como Axios para se conectar à API Rest Countries, o Worldpedia se destaca como uma ferramenta indispensável para aqueles que desejam aprofundar seus conhecimentos sobre o mundo em que vivemos.`
+            }
+          ]
+        },
+        {
+          title: 'Desafios da Criação do Front-end:',
+          content: [
+            {
+              text: 'Integração de Dados: Garantir a integração perfeita de dados provenientes de diferentes fontes, como a API Rest Countries, exigiu um planejamento cuidadoso e a implementação de estratégias eficazes de manipulação de dados.'
+            },
+            {
+              text: 'Interface Intuitiva: Desenvolver uma interface de usuário (UI) intuitiva e amigável foi crucial para garantir que os usuários pudessem interagir facilmente com o Worldpedia e acessar as informações desejadas de forma rápida e eficiente.'
+            },
+            {
+              text: 'Escalabilidade: O front-end foi projetado para ser escalável, permitindo a expansão fácil e acomodação de novas funcionalidades à medida que o Worldpedia cresce e evolui.'
+            },
+            {
+              text: 'Persistência de Dados: Garantir a persistência eficiente dos dados foi um desafio crucial durante o desenvolvimento do Worldpedia. Manipular o LocalStorage de forma adequada e segura, especialmente para armazenar o histórico de busca e as preferências de tema dos usuários, exigiu uma abordagem cuidadosa. Isso envolveu lidar com questões como o formato dos dados, gerenciamento de espaço e garantia de integridade, proporcionando uma experiência confiável e consistente para os usuários do Worldpedia.'
+            }
+          ]
+        },
+        {
+          title: 'Tecnologias Usadas:',
+          content: [
+            {
+              text: 'Axios (0.21.4): Uma biblioteca para fazer requisições HTTP de forma fácil e flexível.'
+            },
+
+            {
+              text: 'React (16.14.0) e React-DOM (16.14.0): Framework JavaScript para construir interfaces de usuário reativas e dinâmicas.'
+            },
+
+            {
+              text: 'React-error-boundary (4.0.11): Um componente de limite de erro para React que captura erros em componentes filhos durante a renderização, permitindo um tratamento de erro mais eficiente e uma melhor experiência do usuário.'
+            },
+            {
+              text: 'React-icons (4.2.0): Uma biblioteca de ícones para React que oferece uma grande variedade de ícones prontos para uso.'
+            },
+
+            {
+              text: 'React-query (3.23.2): Uma biblioteca para fazer requisições de dados de forma eficiente e gerenciar o estado da aplicação.'
+            },
+            {
+              text: 'Styled-components (5.3.1): Biblioteca para estilização de componentes React usando estilos CSS-in-JS, oferecendo escopo de estilo e reutilização de código.'
+            },
+            {
+              text: 'react-google-charts (4.0.1): É uma biblioteca que fornece componentes React para renderizar gráficos utilizando a API do Google Charts. Esses componentes facilitam a integração de gráficos interativos e visualmente atraentes em aplicativos React, permitindo a visualização de dados de forma eficaz e dinâmica. Com o React Google Charts, os desenvolvedores podem criar uma variedade de gráficos, como gráficos de barras, gráficos de pizza, gráficos de linhas e muito mais, aproveitando a poderosa funcionalidade da biblioteca Google Charts.'
+            },
+            {
+              text: 'xlsx (0.18.5): É uma biblioteca para manipulação de arquivos Excel em JavaScript. Ela oferece uma ampla gama de funcionalidades para ler, escrever e manipular planilhas do Excel diretamente em aplicativos desenvolvidos em JavaScript, permitindo a automação de tarefas relacionadas a dados em formatos de planilha.'
+            }
+          ]
+        }
+      ]
+    },
+
+    {
       status: 'Em Desenvolvimento',
       img: '/img/projects/YG/capa.png',
       icon: '/codeIcon/icons8-react.svg',

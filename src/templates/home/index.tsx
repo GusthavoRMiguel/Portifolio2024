@@ -42,6 +42,18 @@ const HomePage = () => {
     <>
       <Head>
         <title>Home | Gusthavo Ramos</title>
+        <meta
+          property="og:title"
+          content="Desenvolvedor Web | Portfólio de Gusthavo Ramos"
+        />
+        <meta
+          name="description"
+          content="Explore o portfólio de Gusthavo Ramos, um desenvolvedor web apaixonado por criar experiências digitais incríveis. Veja seus projetos, habilidades e entre em contato."
+        />
+        <meta
+          property="og:description"
+          content="Explore o portfólio de Gusthavo Ramos, um desenvolvedor web apaixonado por criar experiências digitais incríveis."
+        />
       </Head>
       <Container>
         <Sidebar isOpen={isSidebarOpen} onOpen={handleSidebarOpen} />

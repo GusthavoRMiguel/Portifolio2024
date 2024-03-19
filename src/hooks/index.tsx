@@ -29,16 +29,30 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
 
   useEffect(() => {
-    setTimeout(() => {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme) {
-        const parsedTheme = JSON.parse(storedTheme);
-        setTheme(parsedTheme);
-      } else {
-        setTheme(light);
-      }
+    const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
+
+    const loadTheme = async () => {
+      try {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+          const parsedTheme = JSON.parse(storedTheme);
+          setTheme(parsedTheme);
+        } else {
+          setTheme(light);
+        }
+      } catch (error) {
+        console.error('Erro ao carregar o tema:', error);
+        setTheme(light);
+      }
+    };
+
+    loadTheme();
+
+    return () => {
+      clearTimeout(loadingTimeout);
+    };
   }, []);
 
   const toggleTheme = () => {

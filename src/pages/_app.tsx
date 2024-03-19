@@ -1,6 +1,8 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import 'semantic-ui-css/semantic.min.css';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import AppProvider from '@/hooks';
 
@@ -56,6 +58,10 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="revised" content="19/03/2024" />
         <meta name="rating" content="General" />
         <meta name="distribution" content="Global" />
+        <meta
+          name="google-site-verification"
+          content="google98a09e06bfb52424.html"
+        />
         <script type="application/ld+json">
           {JSON.stringify(schemaMarkup)}
         </script>
@@ -63,7 +69,8 @@ function App({ Component, pageProps }: AppProps) {
       <Suspense fallback={<LoadingPage />}>
         <Component {...pageProps} />
       </Suspense>
-
+      <Analytics />
+      <SpeedInsights />
       <CircleClick />
       <GlobalStyles />
     </AppProvider>

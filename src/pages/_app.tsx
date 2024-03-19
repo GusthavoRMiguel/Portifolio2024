@@ -60,7 +60,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="distribution" content="Global" />
         <meta
           name="google-site-verification"
-          content="google98a09e06bfb52424.html"
+          content="DzslzqaXQ3j8pkacQ4Ad1hqF9HRutnLsaPUfPY7bP78"
         />
         <script type="application/ld+json">
           {JSON.stringify(schemaMarkup)}

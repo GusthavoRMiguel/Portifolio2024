@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer, { TransportOptions, SentMessageInfo } from 'nodemailer';
 import axios from 'axios';
 
@@ -47,73 +48,85 @@ async function getPubFile(file: string): Promise<string> {
 }
 
 export default async function handler(
-  req: { body: RequestBody },
-  res: Response
+  req: NextApiRequest,
+  res: NextApiResponse
 ) {
-  await sendEmails(req, res);
-}
+  if (req.method === 'POST') {
+    try {
+      const { name, email, phone, message, subject } = req.body;
 
-async function sendEmails(req: { body: RequestBody }, res: Response) {
-  const transporter = nodemailer.createTransport(mailConfig);
+      const transporter = nodemailer.createTransport(mailConfig);
 
-  const template = await getPubFile('/email-templates/template.html');
-  const custHtml = await getPubFile('/email-templates/customer.html');
-  const adminHtml = await getPubFile('/email-templates/admin.html');
-  const custTxt = await getPubFile('/email-templates/customer.txt');
-  const adminTxt = await getPubFile('/email-templates/admin.txt');
+      const template = await getPubFile('/email-templates/template.html');
+      const custHtml = await getPubFile('/email-templates/customer.html');
+      const adminHtml = await getPubFile('/email-templates/admin.html');
+      const custTxt = await getPubFile('/email-templates/customer.txt');
+      const adminTxt = await getPubFile('/email-templates/admin.txt');
 
-  const recipEmail = `${req.body.name} <${req.body.email}>`;
+      const recipEmail = `${name} <${email}>`;
 
-  let sendHtml = template
-    .replace('%BODY%', custHtml)
-    .replace('%NAME%', req.body.name)
-    .replace('%EMAIL%', req.body.email)
-    .replace('%PHONE%', req.body.phone)
-    .replace('%MESSAGE%', req.body.message);
+      let sendHtml = template
+        .replace('%BODY%', custHtml)
+        .replace('%NAME%', name)
+        .replace('%EMAIL%', email)
+        .replace('%PHONE%', phone)
+        .replace('%MESSAGE%', message);
 
-  let sendTxt = custTxt
-    .replace('%NAME%', req.body.name)
-    .replace('%EMAIL%', req.body.email)
-    .replace('%PHONE%', req.body.phone)
-    .replace('%MESSAGE%', req.body.message);
+      let sendTxt = custTxt
+        .replace('%NAME%', name)
+        .replace('%EMAIL%', email)
+        .replace('%PHONE%', phone)
+        .replace('%MESSAGE%', message);
 
-  let info: SentMessageInfo = await transporter.sendMail({
-    from: adminEmail,
-    to: recipEmail,
-    subject: 'Mensagem Recebida ✔',
-    text: sendTxt,
-    html: sendHtml
-  });
+      let info: SentMessageInfo = await transporter.sendMail({
+        from: adminEmail,
+        to: recipEmail,
+        subject: 'Mensagem Recebida ✔',
+        text: sendTxt,
+        html: sendHtml
+      });
 
-  if (!info.messageId) {
-    res.status(200).json({ status: 0, message: 'Falha no envio da mensagem!' });
-    return false;
-  }
+      if (!info.messageId) {
+        res
+          .status(200)
+          .json({ status: 0, message: 'Falha no envio da mensagem!' });
+        return;
+      }
 
-  sendHtml = template
-    .replace('%BODY%', adminHtml)
-    .replace('%NAME%', req.body.name)
-    .replace('%EMAIL%', req.body.email)
-    .replace('%PHONE%', req.body.phone)
-    .replace('%MESSAGE%', req.body.message);
+      sendHtml = template
+        .replace('%BODY%', adminHtml)
+        .replace('%NAME%', name)
+        .replace('%EMAIL%', email)
+        .replace('%PHONE%', phone)
+        .replace('%MESSAGE%', message);
 
-  sendTxt = adminTxt
-    .replace('%NAME%', req.body.name)
-    .replace('%EMAIL%', req.body.email)
-    .replace('%PHONE%', req.body.phone)
-    .replace('%MESSAGE%', req.body.message);
+      sendTxt = adminTxt
+        .replace('%NAME%', name)
+        .replace('%EMAIL%', email)
+        .replace('%PHONE%', phone)
+        .replace('%MESSAGE%', message);
 
-  info = await transporter.sendMail({
-    from: recipEmail,
-    to: adminEmail,
-    subject: req.body.subject ? req.body.subject : 'Nova Mensagem do Site ✔',
-    text: sendTxt,
-    html: sendHtml
-  });
+      info = await transporter.sendMail({
+        from: recipEmail,
+        to: adminEmail,
+        subject: subject ? subject : 'Nova Mensagem do Site ✔',
+        text: sendTxt,
+        html: sendHtml
+      });
 
-  if (info.messageId) {
-    res.status(200).json({ status: 1 });
+      if (info.messageId) {
+        res.status(200).json({ status: 1 });
+      } else {
+        res
+          .status(200)
+          .json({ status: 0, message: 'Falha no envio da mensagem!' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ status: 0, message: 'Erro interno do servidor.' });
+    }
   } else {
-    res.status(200).json({ status: 0, message: 'Falha no envio da mensagem!' });
+    res.setHeader('Allow', ['POST']);
+    res.status(405).end('Method Not Allowed');
   }
 }

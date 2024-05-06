@@ -159,9 +159,23 @@ const ContactPage: React.FC = () => {
                         message: ''
                       }}
                       validationSchema={ContactSchema}
-                      onSubmit={(values) => submitForm(values)}
+                      onSubmit={(values, { setSubmitting }) => {
+                        submitForm(values)
+                          .then(() => {
+                            setIsSubmitted(true);
+                          })
+                          .catch((error) => {
+                            alert(
+                              'Um erro ocorreu. Consulte o registro para obter detalhes.'
+                            );
+                            console.error(error);
+                          })
+                          .finally(() => {
+                            setSubmitting(false);
+                          });
+                      }}
                     >
-                      {({ isSubmitting, errors, touched, isValid }) => (
+                      {({ isSubmitting, errors, touched, isValid, values }) => (
                         <form>
                           <div className="container-input">
                             <label htmlFor="name">Nome Completo</label>
@@ -232,8 +246,11 @@ const ContactPage: React.FC = () => {
                           </div>
 
                           <button
-                            type="submit"
+                            type="button"
                             disabled={isSubmitting || !isValid}
+                            onClick={() => {
+                              submitForm(values);
+                            }}
                           >
                             {isSubmitting
                               ? 'Enviando...'

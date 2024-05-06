@@ -380,7 +380,16 @@ const ProjectsPage: React.FC = () => {
         }
       ]
     },
-
+    {
+      status: 'Em Desenvolvimento',
+      img: '/img/projects/MS/capa.png',
+      icon: '/codeIcon/icons8-react.svg',
+      title: 'Money Script',
+      description:
+        'Gestor de finanças desenvolvido em react e banco de dados firebase.',
+      link: 'https://money-script.vercel.app/',
+      linkGithub: 'https://github.com/GusthavoRMiguel/MoneyScript'
+    },
     {
       status: 'Em Desenvolvimento',
       img: '/img/projects/YG/capa.png',
@@ -417,16 +426,6 @@ const ProjectsPage: React.FC = () => {
       description: 'Clone NetFlix em javascript com bootstrap  e carrousel.',
       link: 'https://mult-flix.vercel.app/',
       linkGithub: 'https://github.com/GusthavoRMiguel/CloneNetflix'
-    },
-    {
-      status: 'Em Desenvolvimento',
-      img: '/img/projects/MS/capa.png',
-      icon: '/codeIcon/icons8-react.svg',
-      title: 'Money Script',
-      description:
-        'Gestor de finanças desenvolvido em react e banco de dados firebase.',
-      link: 'https://money-script.vercel.app/',
-      linkGithub: 'https://github.com/GusthavoRMiguel/MoneyScript'
     }
   ];
 

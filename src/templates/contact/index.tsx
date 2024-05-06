@@ -86,7 +86,7 @@ const ContactPage: React.FC = () => {
     try {
       const res = await axios.post('/api/contact-form', values);
 
-      if (res.data.status === 1) {
+      if (res.data.status === 1 || 'Falha no envio da mensagem.') {
         setIsSubmitted(true);
       } else {
         alert(res.data.message);
@@ -146,7 +146,7 @@ const ContactPage: React.FC = () => {
                     className="item"
                   >
                     <RiMailOpenLine />
-                    <div>gusthavo.rmiguel@gmail.com</div>
+                    <div>gusthavo.dev@gmail.com</div>
                   </Link>
                 </BoxContact>
                 <FormContainer>
